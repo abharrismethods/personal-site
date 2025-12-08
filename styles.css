@@ -31,6 +31,10 @@ body {
   min-height: 100vh;
 }
 
+h1, h2, .section-title, .experience-title, .project-title, .education-degree {
+  font-family: 'Avenir Next', 'Avenir', 'Nunito', 'Inter', sans-serif;
+}
+
 a {
   color: var(--accent);
   text-decoration: none;
@@ -239,18 +243,18 @@ a:hover {
 }
 
 .skill-tag {
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
+  background: rgba(92, 184, 92, 0.22);
+  color: #2d6b2d;
   padding: 0.35rem 0.75rem;
   border-radius: 6px;
   font-size: 0.85rem;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(92, 184, 92, 0.4);
   transition: all 0.2s ease;
 }
 
 .skill-tag:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  background: rgba(92, 184, 92, 0.32);
+  border-color: rgba(92, 184, 92, 0.55);
 }
 
 /* Education */
