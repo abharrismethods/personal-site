@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andrew Harris | Data Acquisition & Engineering Leader</title>
-  <meta name="description" content="Director of Web Data Acquisition and engineering leader. Architect of billion-scale crawlers, agentic extraction pipelines, and AI-powered data intelligence systems.">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#5cb85c" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1411" media="(prefers-color-scheme: dark)">
+  <title>Andrew Harris — Fractional Data Engineering</title>
+  <meta name="description" content="Fractional data engineering for AI startups. Scraping infrastructure, data pipelines, and agentic data workflows on a monthly retainer.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=3">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" href="favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -16,260 +22,158 @@
 <body>
   <!-- Navigation -->
   <nav class="nav">
-    <a href="index.html" class="nav-link active">Resume</a>
+    <a href="index.html" class="nav-link active">Services</a>
     <a href="portfolio.html" class="nav-link">Portfolio</a>
+    <a href="resume.html" class="nav-link">Resume</a>
   </nav>
 
-  <!-- Header -->
-  <header class="header">
-    <img src="headshot.jpg" alt="Andrew Harris" class="avatar">
-    <h1>Andrew Harris</h1>
-    <p class="tagline">Data Acquisition & Engineering Leader | Scaling Data Platforms from Startup to IPO</p>
-    <p class="subline">Architect of billion-scale crawlers, agentic extraction pipelines, and AI-powered data intelligence systems</p>
+  <!-- Offer Card (replaces traditional hero) -->
+  <section class="offer-card" aria-label="Fractional engagement overview">
+    <img class="offer-avatar" src="headshot.jpg" alt="Andrew Harris">
+    <div class="offer-body">
+      <div class="offer-eyebrow">Fractional engagement</div>
+      <h1 class="offer-title">Senior data engineering, on retainer.</h1>
+      <p class="offer-name">Andrew Harris · Director-level · Vancouver, WA</p>
+      <p class="offer-positioning">
+        Scraping infrastructure, data pipelines, and agentic data workflows for AI startups — built and maintained on a monthly retainer. One engagement at a time.
+      </p>
 
-    <!-- Social Links -->
-    <div class="social-links">
-      <a href="https://linkedin.com/in/thatsgooddata" class="social-link" title="LinkedIn" target="_blank" rel="noopener">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-      </a>
-      <a href="mailto:andrew@abharrismethods.com" class="social-link" title="Email">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-      </a>
-      <a href="tel:+13609046802" class="social-link" title="Phone">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-      </a>
-      <a href="https://github.com/abharrismethods" class="social-link" title="GitHub" target="_blank" rel="noopener">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-      </a>
-      <a href="resume.pdf" class="social-link" title="Download Resume" target="_blank" rel="noopener">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-      </a>
+      <div class="chip-row">
+        <span class="chip chip-accent">$5,000 / month</span>
+        <span class="chip">15 hrs / week</span>
+        <span class="chip">Async-first</span>
+        <span class="chip">2-month minimum</span>
+      </div>
+
+      <div class="status-line">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>Currently accepting <strong>one new engagement</strong></span>
+      </div>
+
+      <div class="offer-actions">
+        <a class="btn-primary" href="mailto:andrew@abharrismethods.com?subject=Fractional%20engagement%20inquiry&body=Company%3A%20%0A%0AData%20sources%3A%20%0A%0ADelivery%20format%3A%20%0A%0ATimeline%3A%20%0A%0AProduct%20context%3A%20">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Email me
+        </a>
+        <a class="btn-secondary" href="portfolio.html">See portfolio →</a>
+      </div>
+
+      <p class="offer-response">&gt; replies within one business day</p>
     </div>
-  </header>
+  </section>
 
-  <main class="container">
-    <!-- Professional Summary -->
-    <h2 class="section-title">Professional Summary</h2>
+  <!-- Proof Strip -->
+  <section class="proof-strip" aria-label="Scale metrics">
+    <div class="proof-stat">
+      <div class="proof-number">1B+</div>
+      <div class="proof-label">pages crawled per month<br>at ZoomInfo</div>
+    </div>
+    <div class="proof-stat">
+      <div class="proof-number">500M+</div>
+      <div class="proof-label">SERP queries per month<br>through the engine I architected</div>
+    </div>
+    <div class="proof-stat">
+      <div class="proof-number">80+</div>
+      <div class="proof-label">production endpoints live<br>across Nodesnack</div>
+    </div>
+  </section>
+
+  <main class="services-main">
+
+    <h2 class="section-title">Who I work with</h2>
     <div class="summary">
-      Director of Web Data Acquisition and engineering leader with nine years at ZoomInfo, scaling the company from startup to public market leader. Architect of billion-scale crawlers, agentic extraction pipelines, and vectorized data platforms powering commercial intelligence. Expert in distributed systems, real-time data ingestion, cloud-native orchestration, and high-precision LLM/SLM-based extraction. Proven builder of high-performance teams across backend, data infrastructure, and machine learning. Delivers scalable, fault-tolerant data platforms that drive product innovation and enterprise revenue.
+      I work with AI companies, agent startups, and data-dependent SaaS teams that need senior scraping and data pipeline work but aren't ready to hire a full-time data engineer.
     </div>
 
-    <!-- Professional Experience -->
-    <h2 class="section-title">Professional Experience</h2>
-
-    <div class="experience-card">
-      <div class="experience-header">
-        <div class="experience-title">Senior Manager, Agentic Web Data Acquisition</div>
-        <div class="experience-company">ZoomInfo · Mar 2023 - Present</div>
-        <div class="experience-meta">Vancouver, WA</div>
-      </div>
+    <h2 class="section-title">What I build</h2>
+    <div class="experience-card services-card">
       <ul class="experience-list">
-        <li>Architected and scaled a SERP engine processing 500M+ monthly searches and distributed crawler frameworks handling 1B+ pages/month with intelligent throttling, caching, and diffing</li>
-        <li>Lead multiple teams of engineers across backend, DevOps, and ML; establish agile roadmaps, velocity metrics, and CI/CD standards</li>
-        <li>Pioneered agentic extraction systems using LLMs and domain-specific SLMs for high-precision entity and event detection</li>
-        <li>Integrated and normalized multi-format datasets from two global vendors (covering 600M+ people and 100M+ companies), building ETL pipelines and graph linking logic</li>
-        <li>Developed news-velocity tracking and realtime acquisition-signal models linking information flow to public-market behavior</li>
+        <li>Production scraping pipelines — proxy infrastructure, anti-bot strategies, retry semantics</li>
+        <li>Data ingestion for RAG systems and AI agents — markdown-native, LLM-formatted output</li>
+        <li>Custom endpoints and extensions on top of the Nodesnack API</li>
+        <li>Migrations of legacy or broken scrapers to reliable, maintained systems</li>
+        <li>End-to-end data delivery: scheduled CSV, S3, webhook, or direct database writes</li>
+      </ul>
+      <p class="services-closer">Every engagement is scoped to the client's specific targets and delivery requirements.</p>
+    </div>
+
+    <h2 class="section-title">What you get in the first two weeks</h2>
+    <div class="experience-card services-card">
+      <ul class="experience-list">
+        <li>A working scrape-to-delivery pipeline for one priority source — code, infra, and first data landed in your system</li>
+        <li>Documented architecture: proxy strategy, rate-limit policy, retry semantics, failure modes</li>
+        <li>Monitoring and a written weekly update so you know where things stand without a meeting</li>
       </ul>
     </div>
 
-    <div class="experience-card">
-      <div class="experience-header">
-        <div class="experience-title">Senior Manager, Software Engineering</div>
-        <div class="experience-company">ZoomInfo · Apr 2021 - Mar 2023</div>
-        <div class="experience-meta">Vancouver, WA</div>
-      </div>
-      <ul class="experience-list">
-        <li>Mentored 50+ engineers across data, backend, and automation teams, building culture of experimentation and distributed architecture</li>
-        <li>Orchestrated transition from monolithic crawlers to microservices architecture</li>
-      </ul>
+    <h2 class="section-title">How we work together</h2>
+    <div class="experience-card services-card">
+      <ol class="process-list">
+        <li><strong>Written intake.</strong> You describe the data you need and the systems it feeds. 20 minutes, async, no call required.</li>
+        <li><strong>SOW within 48 hours.</strong> I send a written scope, deliverables, and start date.</li>
+        <li><strong>Start within the week.</strong> First deliverables land in the first 7 days of the engagement.</li>
+      </ol>
     </div>
 
-    <div class="experience-card">
-      <div class="experience-header">
-        <div class="experience-title">Manager of Data Strategy</div>
-        <div class="experience-company">ZoomInfo · Oct 2019 - Mar 2021</div>
-        <div class="experience-meta">Vancouver, WA</div>
-      </div>
-      <ul class="experience-list">
-        <li>Drove incremental value and new licensed data assets from 5+ partnerships with double digit ROI</li>
-        <li>Created BI function and vision, hired BI manager and analysts, achieving 50% reduction in dashboard delivery time</li>
-      </ul>
-    </div>
-
-    <div class="experience-card">
-      <div class="experience-header">
-        <div class="experience-title">Operations Analyst / Special Projects Analyst</div>
-        <div class="experience-company">DiscoverOrg · Jul 2016 - Oct 2019</div>
-        <div class="experience-meta">Vancouver, WA</div>
-      </div>
-      <ul class="experience-list">
-        <li>Joined as one of first 150 employees; contributed to foundational systems enabling growth from startup to enterprise scale</li>
-        <li>Authored voicemail fingerprinting algorithms validating phone-number ownership, ingesting tens of millions of data points</li>
-        <li>Accelerated contact-growth from &lt;1M to &gt;100M verified entities through analytical models and data quality improvements</li>
-        <li>Conducted specialized research projects supporting product development and data acquisition initiatives during critical growth phase</li>
-      </ul>
-    </div>
-
-    <!-- Side Projects -->
-    <h2 class="section-title">Side Projects</h2>
-
-    <div class="experience-card">
-      <div class="experience-header">
-        <div class="experience-title">Serpopotamus</div>
-        <div class="experience-company"><a href="https://github.com/abharrismethods/serpopotamus" target="_blank">github.com/abharrismethods/serpopotamus</a></div>
-      </div>
-      <p style="color: var(--text-secondary); font-size: 0.95rem;">Google Search and Maps SERP scraper with Flask web UI, PostgreSQL storage, and batch CSV processing</p>
-    </div>
-
-    <div class="experience-card">
-      <div class="experience-header">
-        <div class="experience-title">Courtwise</div>
-        <div class="experience-company"><a href="https://github.com/abharrismethods/courtwise" target="_blank">github.com/abharrismethods/courtwise</a></div>
-      </div>
-      <p style="color: var(--text-secondary); font-size: 0.95rem;">Agentic RAG platform for navigating the legal system - crawls, indexes, and enables semantic search across legal documents</p>
-    </div>
-
-    <div class="experience-card">
-      <div class="experience-header">
-        <div class="experience-title">Catchmark</div>
-        <div class="experience-company"><a href="https://www.catchmarksthespot.com" target="_blank">www.catchmarksthespot.com</a></div>
-      </div>
-      <p style="color: var(--text-secondary); font-size: 0.95rem;">Fishing spot discovery platform for anglers. React/TypeScript frontend, Express backend, PostGIS for geospatial queries</p>
-    </div>
-
-    <!-- Technical Skills -->
-    <h2 class="section-title">Technical Skills</h2>
-
-    <div class="skills-category">
-      <div class="skills-category-title">Data Infrastructure</div>
-      <div class="skills-tags">
-        <span class="skill-tag">Postgres</span>
-        <span class="skill-tag">pgvector</span>
-        <span class="skill-tag">AWS S3</span>
-        <span class="skill-tag">EC2</span>
-        <span class="skill-tag">Lambda</span>
-        <span class="skill-tag">Kinesis</span>
-        <span class="skill-tag">Redis</span>
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">GitHub Actions</span>
-        <span class="skill-tag">Airflow</span>
-        <span class="skill-tag">Kafka</span>
-        <span class="skill-tag">Spark</span>
-        <span class="skill-tag">Beam</span>
-        <span class="skill-tag">Snowflake</span>
-        <span class="skill-tag">BigQuery</span>
-        <span class="skill-tag">GCS</span>
-        <span class="skill-tag">Varnish</span>
-      </div>
-    </div>
-
-    <div class="skills-category">
-      <div class="skills-category-title">Languages & Frameworks</div>
-      <div class="skills-tags">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">FastAPI</span>
-        <span class="skill-tag">Flask</span>
-        <span class="skill-tag">Scrapy</span>
-        <span class="skill-tag">Playwright</span>
-        <span class="skill-tag">Selenium</span>
-        <span class="skill-tag">BeautifulSoup</span>
-        <span class="skill-tag">Node.js</span>
-        <span class="skill-tag">Neo4J</span>
-        <span class="skill-tag">Spanner</span>
-        <span class="skill-tag">NLTK</span>
-        <span class="skill-tag">spaCy</span>
-        <span class="skill-tag">Go</span>
-        <span class="skill-tag">PyArrow</span>
-        <span class="skill-tag">LlamaIndex</span>
-        <span class="skill-tag">RAG</span>
-      </div>
-    </div>
-
-    <div class="skills-category">
-      <div class="skills-category-title">Search & Crawling</div>
-      <div class="skills-tags">
-        <span class="skill-tag">SERP Orchestration</span>
-        <span class="skill-tag">Proxy Management</span>
-        <span class="skill-tag">Rate Limiting</span>
-        <span class="skill-tag">Diff-based Crawling</span>
-        <span class="skill-tag">Apache Nutch</span>
-        <span class="skill-tag">Frontera</span>
-        <span class="skill-tag">Crawl4AI</span>
-        <span class="skill-tag">Colly</span>
-        <span class="skill-tag">Guzzle</span>
-        <span class="skill-tag">Headless Fingerprinting</span>
-        <span class="skill-tag">CAPTCHA Resolution</span>
-      </div>
-    </div>
-
-    <div class="skills-category">
-      <div class="skills-category-title">Machine Intelligence</div>
-      <div class="skills-tags">
-        <span class="skill-tag">OpenAI</span>
-        <span class="skill-tag">Anthropic LLMs</span>
-        <span class="skill-tag">Custom SLMs</span>
-        <span class="skill-tag">Embeddings</span>
-        <span class="skill-tag">Entity Resolution</span>
-        <span class="skill-tag">Enrichment Models</span>
-        <span class="skill-tag">LangChain</span>
-        <span class="skill-tag">LangGraph</span>
-        <span class="skill-tag">HuggingFace</span>
-        <span class="skill-tag">Vertex AI</span>
-        <span class="skill-tag">Groq</span>
-      </div>
-    </div>
-
-    <div class="skills-category">
-      <div class="skills-category-title">Leadership & Strategy</div>
-      <div class="skills-tags">
-        <span class="skill-tag">Hiring & Scaling</span>
-        <span class="skill-tag">Technical Mentorship</span>
-        <span class="skill-tag">OKR Design</span>
-        <span class="skill-tag">CI/CD</span>
-        <span class="skill-tag">Cross-functional Leadership</span>
-        <span class="skill-tag">Vendor Integration</span>
-        <span class="skill-tag">Data Lineage</span>
-        <span class="skill-tag">GDPR</span>
-        <span class="skill-tag">CCPA</span>
-      </div>
-    </div>
-
-    <!-- Education -->
-    <h2 class="section-title">Education</h2>
-
-    <div class="education-item">
-      <div class="education-degree">Master of Public Affairs (M.P.A.), Applied Policy</div>
-      <div class="education-school">Washington State University</div>
-    </div>
-
-    <div class="education-item">
-      <div class="education-degree">Bachelor of Arts (B.A.), History & Development of Language</div>
-      <div class="education-school">Winthrop University</div>
-      <div class="education-details">Sigma Tau Delta - Chapter President</div>
-    </div>
-
-    <!-- Notable Achievements -->
-    <h2 class="section-title">Notable Achievements</h2>
-
+    <h2 class="section-title">Engagement shape</h2>
     <div class="achievement-item">
-      Transformed ZoomInfo's acquisition codebase into a billion-page, enterprise-grade web intelligence platform driving core product data.
+      <strong>$5,000 per month · 15 hours per week · 2-month minimum, month-to-month after.</strong>
+      Async-first. Weekly written progress updates. 48-hour response on new work requests. Scoped through a short written SOW, billed monthly in advance.
     </div>
-    <div class="achievement-item">
-      Advanced from analyst to director scope assuming ownership of the company's mission-critical acquisition infrastructure and strategy.
+
+    <h2 class="section-title">Common questions</h2>
+    <details class="faq-item">
+      <summary>Can you start faster than one week?</summary>
+      <div class="faq-body">Sometimes. If the source is familiar territory and the SOW is tight, I can start next day. Mention your timeline in the intake email — I'll say upfront whether it's realistic.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Do you sign NDAs?</summary>
+      <div class="faq-body">Yes. Standard mutual NDA, digitally signed before any discovery work. If you have your own template, send it with the intake.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Do you work with non-AI companies?</summary>
+      <div class="faq-body">The offer is tuned for AI startups and data-dependent SaaS teams, but the underlying work is the same — scraping, pipelines, delivery. If you're not an AI team but have a real data problem, email me and I'll tell you honestly whether I'm the right fit.</div>
+    </details>
+
+    <h2 class="section-title">About me</h2>
+    <div class="about-inline">
+      <img src="headshot.jpg" alt="">
+      <p>
+        Director-level data acquisition leader at a public company, with nine years of production scraping, pipelines, and agentic extraction work. I run <a href="https://nodesnack.com" target="_blank" rel="noopener">Nodesnack</a> on the side — the same infrastructure I use for client engagements. See <a href="resume.html">resume</a> and <a href="portfolio.html">portfolio</a> for context.
+      </p>
     </div>
-    <div class="achievement-item">
-      One of the first 150 employees instrumental in growing engineering and data infrastructure through 3,500+ headcount and an explosive IPO.
+
+    <h2 class="section-title">Get in touch</h2>
+    <div class="cta-card">
+      <p class="cta-lead">To discuss an engagement, email <a href="mailto:andrew@abharrismethods.com">andrew@abharrismethods.com</a>.</p>
+
+      <div class="cta-actions">
+        <a class="btn-primary" href="mailto:andrew@abharrismethods.com?subject=Fractional%20engagement%20inquiry&body=Company%3A%20%0A%0AData%20sources%3A%20%0A%0ADelivery%20format%3A%20%0A%0ATimeline%3A%20%0A%0AProduct%20context%3A%20">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Start a written intake
+        </a>
+      </div>
+
+      <div class="cta-checklist-label">What to include</div>
+      <ul class="cta-checklist">
+        <li>Company &amp; product context</li>
+        <li>Data sources you need</li>
+        <li>Delivery format &amp; cadence</li>
+        <li>Rough timeline</li>
+        <li>Anything else worth knowing</li>
+      </ul>
+
+      <p class="cta-response">&gt; replies within one business day</p>
     </div>
   </main>
 
   <!-- Footer -->
   <footer class="footer">
-    <p>&copy; 2024 Andrew Harris. Vancouver, WA.</p>
+    <p>&copy; 2026 Andrew Harris · Vancouver, WA</p>
+    <p class="footer-note">Engagements are contracted through Nodesnack LLC, a Wyoming limited liability company.</p>
   </footer>
 
   <!-- Vercel Analytics -->
   <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
-
