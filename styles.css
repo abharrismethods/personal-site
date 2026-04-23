@@ -855,6 +855,230 @@ a:hover {
   font-style: italic;
 }
 
+/* Feeds table */
+.feeds-intro {
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.feeds-search-wrap {
+  position: relative;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+}
+
+.feeds-search-icon {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.feeds-search {
+  width: 100%;
+  padding: 0.65rem 5rem 0.65rem 2.35rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.feeds-search::placeholder {
+  color: var(--text-muted);
+}
+
+.feeds-search:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.feeds-search::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+.feeds-search-count {
+  position: absolute;
+  right: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--mono-stack);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.feeds-empty {
+  margin-top: 0.85rem;
+  padding: 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+}
+
+.feeds-empty a {
+  color: var(--accent-dark);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.feeds-table-wrap {
+  max-height: 520px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-card);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+.feeds-table-wrap::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.feeds-table-wrap::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 10px;
+}
+
+.feeds-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  table-layout: auto;
+}
+
+.feeds-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border-strong);
+  box-shadow: 0 1px 0 var(--border-strong);
+}
+
+.feeds-table tbody td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.feeds-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.feeds-table tbody tr:hover td {
+  background: var(--accent-soft);
+}
+
+.feeds-table tbody td:first-child {
+  color: var(--text-primary);
+  font-weight: 600;
+  min-width: 7.5rem;
+}
+
+.feeds-table thead th:nth-child(2),
+.feeds-table tbody td:nth-child(2) {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.feeds-table .col-price {
+  text-align: right;
+  font-family: var(--mono-stack);
+  font-weight: 700;
+  color: var(--accent-dark);
+  white-space: nowrap;
+}
+
+.feeds-table .col-num {
+  text-align: right;
+  font-family: var(--mono-stack);
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.feeds-table thead th.col-price,
+.feeds-table thead th.col-num {
+  color: var(--text-primary);
+}
+
+.feeds-badge {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.1rem 0.45rem;
+  background: var(--skill-tag-bg);
+  color: var(--skill-tag-text);
+  border: 1px solid var(--skill-tag-border);
+  border-radius: 9999px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-family: var(--mono-stack);
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+
+.feeds-footnote {
+  margin-top: 0.85rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.feeds-footnote a {
+  color: var(--accent-dark);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 760px) {
+  .feeds-table thead th:nth-child(2),
+  .feeds-table tbody td:nth-child(2) {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .feeds-table {
+    font-size: 0.85rem;
+  }
+  .feeds-table tbody td,
+  .feeds-table thead th {
+    padding: 0.6rem 0.7rem;
+  }
+  .feeds-table thead th:nth-child(4),
+  .feeds-table tbody td.col-num {
+    display: none;
+  }
+  .feeds-table tbody td:first-child {
+    min-width: 6rem;
+  }
+}
+
 /* Numbered process list */
 .process-list {
   list-style: none;
