@@ -607,7 +607,7 @@ a:hover {
   font-weight: 600;
 }
 
-/* Offer card — business-card hero for Services home */
+/* Offer card - business-card hero for Services home */
 .offer-card {
   max-width: 900px;
   margin: 2rem auto 1.5rem;
@@ -787,7 +787,7 @@ a:hover {
   font-family: var(--mono-stack);
 }
 
-/* Proof strip — inline scale numbers */
+/* Proof strip - inline scale numbers */
 .proof-strip {
   max-width: 900px;
   margin: 0 auto 2rem;
@@ -821,7 +821,7 @@ a:hover {
   line-height: 1.4;
 }
 
-/* Services content — left-aligned with slight indent */
+/* Services content - left-aligned with slight indent */
 .services-main {
   max-width: 900px;
   margin: 0 auto;
