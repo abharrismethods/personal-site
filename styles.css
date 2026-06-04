@@ -1331,3 +1331,201 @@ a:hover {
     font-size: 0.88rem;
   }
 }
+
+/* ============================================================
+   Tier ladder (How to work with me)
+   ============================================================ */
+.tier-intro {
+  color: var(--text-secondary);
+  margin: 0 0 1rem 0;
+  font-size: 0.97rem;
+}
+
+.tier-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.tier-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.tier-card-anchor {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent-soft);
+}
+
+.tier-header {
+  margin-bottom: 0.85rem;
+}
+
+.tier-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.tier-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+  color: var(--text-primary);
+}
+
+.tier-price {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.tier-price-meta {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.tier-blurb {
+  color: var(--text-secondary);
+  font-size: 0.97rem;
+  margin: 0 0 0.85rem 0;
+}
+
+.tier-cta {
+  margin-top: 0.85rem;
+}
+
+.tier-cta .btn-primary {
+  font-size: 0.92rem;
+}
+
+/* ============================================================
+   Portfolio metric chips
+   ============================================================ */
+.project-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.4rem 0 0.9rem 0;
+}
+
+.metric-chip {
+  background: var(--accent-soft);
+  color: var(--text-primary);
+  border: 1px solid var(--accent-soft-strong);
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+}
+
+.metric-chip strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ============================================================
+   "Who I work with" summary aside
+   ============================================================ */
+.summary-aside {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  font-style: italic;
+  margin-top: 0.6rem;
+}
+
+/* ============================================================
+   Intake form (cta-card 6-field grid)
+   ============================================================ */
+.intake-header {
+  margin-bottom: 1rem;
+  padding-top: 0.25rem;
+}
+
+.intake-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.intake-sub {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+.intake-fields {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+}
+
+.intake-field {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem 0.9rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.intake-field:hover {
+  border-color: var(--accent-soft-strong);
+  background: var(--bg-card);
+}
+
+.intake-num {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--mono-stack);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.intake-body {
+  min-width: 0;
+}
+
+.intake-label {
+  color: var(--text-primary);
+  font-size: 0.94rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  line-height: 1.25;
+}
+
+.intake-desc {
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .intake-fields {
+    grid-template-columns: 1fr;
+  }
+  .intake-field {
+    padding: 0.75rem 0.8rem;
+  }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#5cb85c" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1411" media="(prefers-color-scheme: dark)">
+  <title>Engineering Logs | Andrew Harris</title>
+  <meta name="description" content="Technical teardowns on scraping at scale, crawl economics, anti-bot architecture, and data acquisition for AI companies.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" href="favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-link">Services</a>
+    <a href="portfolio.html" class="nav-link">Portfolio</a>
+    <a href="logs.html" class="nav-link active">Engineering Logs</a>
+    <a href="resume.html" class="nav-link">Resume</a>
+  </nav>
+
+  <!-- Header -->
+  <section class="offer-card" aria-label="Engineering Logs">
+    <img class="offer-avatar" src="headshot.jpg" alt="Andrew Harris">
+    <div class="offer-body">
+      <div class="offer-eyebrow">Engineering Logs</div>
+      <h1 class="offer-title">Notes from running large-scale data acquisition in production.</h1>
+      <p class="offer-name">Architecture, economics, and reliability - nothing about marketing funnels or "thought leadership."</p>
+      <p class="offer-positioning">
+        Short, specific teardowns of how acquisition systems actually fail, scale, and pay for themselves. Written for the people running them.
+      </p>
+
+      <div class="chip-row">
+        <span class="chip chip-accent">New post every ~2 weeks</span>
+        <span class="chip">Architecture · Economics · Anti-bot</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <p class="portfolio-crosslink">
+      Looking to hire me? See <a href="index.html">Services</a>.
+    </p>
+
+    <!-- Upcoming -->
+    <h2 class="section-title">Coming soon</h2>
+    <p class="feeds-intro">First posts queued, in order of priority. If a topic here is what you're wrestling with, just <a href="mailto:andrew@abharrismethods.com?subject=Engineering%20Log%20topic%20request">email me</a> - I'll send notes ahead of the writeup.</p>
+
+    <div class="experience-card services-card">
+      <div class="tier-header">
+        <div class="tier-eyebrow">Log #1 · Coming soon</div>
+        <h3 class="tier-title">Why most scraping projects fail</h3>
+      </div>
+      <p>The recurring failure modes I see across audits: source choice before architecture, cost-per-document never measured, anti-bot strategy that can't survive a single vendor change, and "scrape now, structure later" pipelines that never get structured. A field guide based on a decade of production systems.</p>
+    </div>
+
+    <div class="experience-card services-card">
+      <div class="tier-header">
+        <div class="tier-eyebrow">Log #2 · Coming soon</div>
+        <h3 class="tier-title">Crawl economics: what a page actually costs you</h3>
+      </div>
+      <p>Most teams price scraping at proxy cost. Real cost is proxy + compute + retry amplification + anti-bot vendor + human babysitting + data quality cleanup + replacement when the source breaks. A model for cost-per-acquired-document and where the actual margins live.</p>
+    </div>
+
+    <div class="experience-card services-card">
+      <div class="tier-header">
+        <div class="tier-eyebrow">Log #3 · Coming soon</div>
+        <h3 class="tier-title">When Bright Data is the wrong solution</h3>
+      </div>
+      <p>Managed scraping vendors are good at exactly the problems they're designed for and quietly terrible at the rest. A decision framework for build vs. buy on proxies, scraping APIs, and full managed data feeds - written from the buyer side, not the vendor side.</p>
+    </div>
+
+    <div class="experience-card services-card">
+      <div class="tier-header">
+        <div class="tier-eyebrow">Log #4 · Coming soon</div>
+        <h3 class="tier-title">Why RAG fails without an acquisition strategy</h3>
+      </div>
+      <p>"We'll just embed everything" is not an acquisition strategy. Why most AI products plateau on data quality and what a real ingestion pipeline looks like - source selection, extraction tier, structure-first vs. structure-later, refresh cadence, and the part nobody talks about: continuous coverage.</p>
+    </div>
+
+    <h2 class="section-title">Get notified</h2>
+    <div class="cta-card">
+      <p class="cta-lead">No newsletter system yet - just email me and I'll add you to a small "ship list" that gets a one-line note when each log goes live.</p>
+      <div class="cta-actions">
+        <a class="btn-primary" href="mailto:andrew@abharrismethods.com?subject=Add%20me%20to%20the%20Engineering%20Logs%20ship%20list">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Add me to the ship list
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Andrew Harris · Vancouver, WA</p>
+  </footer>
+
+  <!-- Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
