@@ -95,7 +95,7 @@
       var SLUG = 'log3-bright-data';
       document.querySelectorAll('a[href^="mailto:andrew@abharrismethods.com"], .log-cta a[href="index.html"], .log-body a[href="index.html"]').forEach(function (a) {
         a.addEventListener('click', function () {
-          window.va && window.va('event', { name: 'log_cta_' + SLUG, data: { post: SLUG } });
+          window.va && window.va('event', { name: 'log_cta_click', data: { post: SLUG } });
         });
       });
     })();
