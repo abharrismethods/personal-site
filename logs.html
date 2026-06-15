@@ -120,7 +120,7 @@
         var href = a.getAttribute('href');
         var name = /ship%20list/i.test(href) ? 'ship_list_signup' : 'email_click';
         a.addEventListener('click', function () {
-          window.va && window.va('event', { name: name, location: 'logs' });
+          window.va && window.va('event', { name: name, data: { location: 'logs' } });
         });
       });
     })();

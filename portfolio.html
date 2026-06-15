@@ -343,7 +343,7 @@
       });
       document.querySelectorAll('a[href^="mailto:andrew@abharrismethods.com"]').forEach(function (a) {
         a.addEventListener('click', function () {
-          window.va && window.va('event', { name: 'email_click', location: 'portfolio' });
+          window.va && window.va('event', { name: 'email_click', data: { location: 'portfolio' } });
         });
       });
     })();

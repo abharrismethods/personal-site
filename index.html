@@ -381,7 +381,7 @@
         a.addEventListener('click', function () {
           window.va && window.va('event', {
             name: isAudit ? 'audit_cta_click' : 'email_click',
-            location: location
+            data: { location: location }
           });
         });
       });
