@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#5cb85c" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1411" media="(prefers-color-scheme: dark)">
+  <title>When Bright Data is the wrong solution | Engineering Logs | Andrew Harris</title>
+  <meta name="description" content="A buyer-side build-vs-buy framework for managed scraping vendors: where they win, and the three cases where building beats renting your moat.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" href="favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-link">Services</a>
+    <a href="portfolio.html" class="nav-link">Portfolio</a>
+    <a href="logs.html" class="nav-link active">Engineering Logs</a>
+    <a href="resume.html" class="nav-link">Resume</a>
+  </nav>
+
+  <article class="log-article">
+    <div class="offer-eyebrow">Engineering Log #3</div>
+    <h1 class="offer-title">When Bright Data is the wrong solution</h1>
+    <p class="log-meta">June 2026 · ~6 min read</p>
+
+    <div class="log-body">
+      <p>I want to be fair to the managed vendors up front, because this gets read as a hit piece and it isn't one. Bright Data, Zyte, Apify, Oxylabs, the managed scraping APIs in general are genuinely good at the specific problems they were built for. I reach for them myself. The mistake isn't using them. The mistake is using them for the thing they're quietly bad at, because the sales page doesn't draw that line and you find out after you've built on top of them.</p>
+      <p>So here's the line, from the buyer's side.</p>
+
+      <h2>What they're actually good at</h2>
+      <p>Managed vendors win when your problem is <em>breadth without depth</em>. You need a hundred different sites, none of them especially defended, none of them business-critical on their own, and you do not want to operate a hundred crawlers. Paying someone else to keep all hundred alive is a great deal. Your engineers do something more valuable than babysitting scrapers.</p>
+      <p>They also win as a fallback tier and as a fast start. When I build a system, a managed unblocking API is often a legitimate rung in the fallback stack: try the cheap path, then the heavier path, then hand the genuinely nasty requests to a vendor that specializes in them. And on day one of a project, a managed API gets you data this week while you decide what's worth building for real. Renting before you build is good discipline.</p>
+      <p>If that's your situation, stop reading and go buy the thing. The rest of this is for the situations where buying is the expensive choice wearing a cheap coat.</p>
+
+      <h2>Where it goes wrong: the source that is your business</h2>
+      <p>The clearest case to build rather than buy is the source that <em>is</em> your product. If your company sells data from one or two sources, those sources are your moat, and you've just rented your moat from a vendor who rents the same access to your competitors. You don't control the cost, the freshness, the coverage, or the roadmap. When the vendor raises prices or the source changes, you find out when your product breaks, and your fix is a support ticket.</p>
+      <p>I've watched a data company discover that its entire differentiation was a Bright Data endpoint that three competitors also used. They weren't a data company. They were a reseller with a UI. The build-versus-buy decision on your core source isn't a cost decision, it's a "do we have a business" decision.</p>
+
+      <h2>Where it goes wrong: cost at volume</h2>
+      <p>Managed scraping is priced per request or per record, and that pricing is wonderful at low volume and brutal at high volume. The per-unit rate that's a rounding error at ten thousand records a month is a serious monthly number at fifty million. At ZoomInfo scale, processing a billion pages a month, no managed vendor's per-request pricing is even in the conversation. You build, because at that volume owning the infrastructure is cheaper by an order of magnitude.</p>
+      <p>The trap is the slope. Volume creeps up, the bill creeps up with it, and there's never a single day where buying obviously became the wrong call. So nobody revisits it. The vendor invoice grows into a number that would have funded the in-house build several times over, and it's been growing for a year. If your managed-scraping bill has a comma in it and your volume is still climbing, run the build math. It's probably overdue.</p>
+
+      <h2>Where it goes wrong: depth on a hard, specific target</h2>
+      <p>Managed APIs are generalists. When you need deep, reliable coverage of one heavily-defended target, with specific fields, specific freshness, and a low tolerance for gaps, a generalist vendor will get you most of the way and stall on the last mile. The last mile is the part that matters and the part they can't prioritize for you, because you're one customer among thousands and your weird edge case isn't on their roadmap. A purpose-built crawler for that one target, tuned to its specific defenses, beats a general solution every time on the source you actually care about.</p>
+
+      <h2>A decision framework you can use in a meeting</h2>
+      <p>Buy when:</p>
+      <ul>
+        <li>You need many sources, each individually low-stakes</li>
+        <li>The data isn't your core differentiator</li>
+        <li>Volume is low or spiky and you don't want fixed infrastructure</li>
+        <li>You need something live this week and can refine later</li>
+        <li>You want a fallback tier for the genuinely nasty requests</li>
+      </ul>
+      <p>Build when:</p>
+      <ul>
+        <li>The source <em>is</em> your product or moat</li>
+        <li>Volume is high enough that per-unit pricing has gone insane (run the actual math, don't eyeball it)</li>
+        <li>You need deep, reliable, specific coverage of a hard target</li>
+        <li>Freshness and coverage gaps directly cost you revenue</li>
+        <li>You need control over cost and roadmap because the business depends on it</li>
+      </ul>
+      <p>Most real stacks are a blend, and that's the right answer. Buy the long tail, build the core, and use managed APIs as a fallback rung inside your own system rather than as the system. The failure I see is binary thinking: "we're a buy shop" or "we build everything," when the actual answer is source-by-source and changes as you scale.</p>
+      <p>The vendors won't tell you where their product stops being the right call, because that's not their job. Knowing where that line sits for <em>your</em> sources, at <em>your</em> volume, is most of what a good build-versus-buy review produces.</p>
+    </div>
+
+    <div class="log-cta">
+      Sorting build from buy across your sources is a core part of the <a href="index.html">Data Acquisition Audit</a> &mdash; written from the buyer's side, with the cost math attached. &mdash; Andrew
+    </div>
+
+    <p class="log-backlink"><a href="logs.html">&larr; All engineering logs</a></p>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Andrew Harris · Vancouver, WA</p>
+  </footer>
+
+  <!-- Analytics: tag CTA clicks on this post -->
+  <script>
+    (function () {
+      var SLUG = 'log3-bright-data';
+      document.querySelectorAll('a[href^="mailto:andrew@abharrismethods.com"], .log-cta a[href="index.html"], .log-body a[href="index.html"]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          window.va && window.va('event', { name: 'log_cta_click', post: SLUG });
+        });
+      });
+    })();
+  </script>
+  <!-- Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

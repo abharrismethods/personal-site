@@ -18,6 +18,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" href="favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
 </head>
 <body>
   <!-- Navigation -->
@@ -51,40 +54,46 @@
       Looking to hire me? See <a href="index.html">Services</a>.
     </p>
 
-    <!-- Upcoming -->
-    <h2 class="section-title">Coming soon</h2>
-    <p class="feeds-intro">First posts queued, in order of priority. If a topic here is what you're wrestling with, just <a href="mailto:andrew@abharrismethods.com?subject=Engineering%20Log%20topic%20request">email me</a> - I'll send notes ahead of the writeup.</p>
+    <!-- Posts -->
+    <h2 class="section-title">Latest posts</h2>
+    <p class="feeds-intro">Wrestling with one of these right now? <a href="mailto:andrew@abharrismethods.com?subject=Engineering%20Log%20topic%20request">Email me</a> - I'm glad to send notes specific to your stack.</p>
 
-    <div class="experience-card services-card">
-      <div class="tier-header">
-        <div class="tier-eyebrow">Log #1 · Coming soon</div>
-        <h3 class="tier-title">Why most scraping projects fail</h3>
-      </div>
-      <p>The recurring failure modes I see across audits: source choice before architecture, cost-per-document never measured, anti-bot strategy that can't survive a single vendor change, and "scrape now, structure later" pipelines that never get structured. A field guide based on a decade of production systems.</p>
-    </div>
+    <div class="log-list">
+      <a class="experience-card services-card log-index-card" href="log-why-most-scraping-projects-fail.html">
+        <div class="tier-header">
+          <div class="tier-eyebrow">Log #1</div>
+          <h3 class="tier-title">Why most scraping projects fail</h3>
+        </div>
+        <p>The recurring failure modes I see across audits: source choice before architecture, cost-per-document never measured, anti-bot strategy that can't survive a single vendor change, and "scrape now, structure later" pipelines that never get structured. A field guide based on a decade of production systems.</p>
+        <div class="log-index-meta"><span>~6 min read</span> · <span class="log-index-readmore">Read &rarr;</span></div>
+      </a>
 
-    <div class="experience-card services-card">
-      <div class="tier-header">
-        <div class="tier-eyebrow">Log #2 · Coming soon</div>
-        <h3 class="tier-title">Crawl economics: what a page actually costs you</h3>
-      </div>
-      <p>Most teams price scraping at proxy cost. Real cost is proxy + compute + retry amplification + anti-bot vendor + human babysitting + data quality cleanup + replacement when the source breaks. A model for cost-per-acquired-document and where the actual margins live.</p>
-    </div>
+      <a class="experience-card services-card log-index-card" href="log-crawl-economics.html">
+        <div class="tier-header">
+          <div class="tier-eyebrow">Log #2</div>
+          <h3 class="tier-title">Crawl economics: what a page actually costs you</h3>
+        </div>
+        <p>Most teams price scraping at proxy cost. Real cost is proxy + compute + retry amplification + anti-bot vendor + human babysitting + data quality cleanup + replacement when the source breaks. A model for cost-per-acquired-document and where the actual margins live.</p>
+        <div class="log-index-meta"><span>~7 min read</span> · <span class="log-index-readmore">Read &rarr;</span></div>
+      </a>
 
-    <div class="experience-card services-card">
-      <div class="tier-header">
-        <div class="tier-eyebrow">Log #3 · Coming soon</div>
-        <h3 class="tier-title">When Bright Data is the wrong solution</h3>
-      </div>
-      <p>Managed scraping vendors are good at exactly the problems they're designed for and quietly terrible at the rest. A decision framework for build vs. buy on proxies, scraping APIs, and full managed data feeds - written from the buyer side, not the vendor side.</p>
-    </div>
+      <a class="experience-card services-card log-index-card" href="log-bright-data-wrong-solution.html">
+        <div class="tier-header">
+          <div class="tier-eyebrow">Log #3</div>
+          <h3 class="tier-title">When Bright Data is the wrong solution</h3>
+        </div>
+        <p>Managed scraping vendors are good at exactly the problems they're designed for and quietly terrible at the rest. A decision framework for build vs. buy on proxies, scraping APIs, and full managed data feeds - written from the buyer side, not the vendor side.</p>
+        <div class="log-index-meta"><span>~6 min read</span> · <span class="log-index-readmore">Read &rarr;</span></div>
+      </a>
 
-    <div class="experience-card services-card">
-      <div class="tier-header">
-        <div class="tier-eyebrow">Log #4 · Coming soon</div>
-        <h3 class="tier-title">Why RAG fails without an acquisition strategy</h3>
-      </div>
-      <p>"We'll just embed everything" is not an acquisition strategy. Why most AI products plateau on data quality and what a real ingestion pipeline looks like - source selection, extraction tier, structure-first vs. structure-later, refresh cadence, and the part nobody talks about: continuous coverage.</p>
+      <a class="experience-card services-card log-index-card" href="log-rag-needs-acquisition-strategy.html">
+        <div class="tier-header">
+          <div class="tier-eyebrow">Log #4</div>
+          <h3 class="tier-title">Why RAG fails without an acquisition strategy</h3>
+        </div>
+        <p>"We'll just embed everything" is not an acquisition strategy. Why most AI products plateau on data quality and what a real ingestion pipeline looks like - source selection, extraction tier, structure-first vs. structure-later, refresh cadence, and the part nobody talks about: continuous coverage.</p>
+        <div class="log-index-meta"><span>~7 min read</span> · <span class="log-index-readmore">Read &rarr;</span></div>
+      </a>
     </div>
 
     <h2 class="section-title">Get notified</h2>
@@ -104,6 +113,18 @@
     <p>&copy; 2026 Andrew Harris · Vancouver, WA</p>
   </footer>
 
+  <!-- Analytics: ship-list signup + topic-request clicks -->
+  <script>
+    (function () {
+      document.querySelectorAll('a[href^="mailto:andrew@abharrismethods.com"]').forEach(function (a) {
+        var href = a.getAttribute('href');
+        var name = /ship%20list/i.test(href) ? 'ship_list_signup' : 'email_click';
+        a.addEventListener('click', function () {
+          window.va && window.va('event', { name: name, location: 'logs' });
+        });
+      });
+    })();
+  </script>
   <!-- Vercel Analytics -->
   <script defer src="/_vercel/insights/script.js"></script>
 </body>

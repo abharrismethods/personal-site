@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#5cb85c" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1411" media="(prefers-color-scheme: dark)">
+  <title>Crawl economics: what a page actually costs you | Engineering Logs | Andrew Harris</title>
+  <meta name="description" content="A model for cost-per-acquired-document: proxies, retry amplification, compute, anti-bot vendors, human babysitting, cleanup, and source replacement.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" href="favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-link">Services</a>
+    <a href="portfolio.html" class="nav-link">Portfolio</a>
+    <a href="logs.html" class="nav-link active">Engineering Logs</a>
+    <a href="resume.html" class="nav-link">Resume</a>
+  </nav>
+
+  <article class="log-article">
+    <div class="offer-eyebrow">Engineering Log #2</div>
+    <h1 class="offer-title">Crawl economics: what a page actually costs you</h1>
+    <p class="log-meta">June 2026 · ~7 min read</p>
+
+    <div class="log-body">
+      <p>Almost everyone prices scraping wrong, and they all make the same mistake: they price the proxy and call it the cost. Then they're surprised when the project's real cost is three to five times that, and surprised again when the cheap source turns out to be the expensive one.</p>
+      <p>Cost per acquired document is the only number that tells you whether your acquisition is healthy. Not pages fetched. Not requests sent. Cost per <em>good record that lands in the place your product reads from</em>. Here's everything that goes into it, in roughly the order people forget about them.</p>
+
+      <h2>Proxies are the part you already counted</h2>
+      <p>This is the visible cost, so I'll keep it short. Residential and mobile proxies are billed by bandwidth or by request, and they're priced to feel small per unit. They are small per unit. They're also the only line item most teams track, which is exactly why the total always comes in over budget.</p>
+      <p>Note the number, then keep going, because everything below is the part that wasn't on the invoice.</p>
+
+      <h2>Retry amplification is the silent multiplier</h2>
+      <p>Here's the one that gets people. You quote yourself "we need one million records, at this proxy rate, so it costs X." But you don't fetch a million pages to get a million records. On a hard target you fetch a million, half fail the first time, you retry, some fail again, you retry again. By the time you have a million clean records you might have made two and a half million requests.</p>
+      <p>Every retry costs proxy bandwidth, costs compute, and costs time. And retry rates aren't stable. They spike exactly when the target hardens its defenses, which is exactly when you can least afford it. A pipeline I'd call healthy keeps the retry multiplier low and, more importantly, <em>visible</em>, so you see it climbing before it becomes the whole bill. Most teams don't measure it at all, so the first sign of trouble is the cloud invoice.</p>
+
+      <h2>Compute is not free just because it's yours</h2>
+      <p>Parsing, rendering, browser automation, the queue workers, the storage of raw payloads. A headless browser is dramatically more expensive than a plain HTTP fetch, and a lot of crawlers reach for the browser by default when most pages don't need one. That's part of why fallback tiers matter: at scale, the difference between "browser for everything" and "browser only when the cheap path fails" is the difference between a sane bill and an absurd one. When you're processing a billion pages a month, a fraction of a cent per page is a real budget line, and the browser-versus-fetch ratio is one of the biggest levers you have.</p>
+
+      <h2>Anti-bot vendors are a cost center that grows with success</h2>
+      <p>If you're paying a CAPTCHA-solving service or a managed unblocking API, that's per-request and it scales linearly with volume. The trap is that it scales with <em>failed</em> volume too. The harder your targets push back, the more you pay these vendors, the higher your cost per document climbs, and the relationship between "more effort" and "more cost" gets worse precisely on the sources you care most about. Worth watching as its own line, not buried in "infrastructure."</p>
+
+      <h2>Human babysitting is the cost nobody puts in the model</h2>
+      <p>This is the big one, and it never shows up in a spreadsheet because it's salary, not invoice.</p>
+      <p>Crawlers break. Sites change layouts, rotate defenses, add a login wall. Someone has to notice, diagnose, and fix it. If that's a senior engineer spending a few hours a week per source across a dozen sources, that's most of a full-time job, and it's the most expensive job on the team. The actual cost of a flaky source isn't the rework. It's the engineer who could have been building something instead of resurrecting a scraper for the fourth time this quarter.</p>
+      <p>When I model cost per document for a client, the babysitting line is usually the one that changes the decision. A source that looks cheap on proxies but eats six engineer-hours a week is not cheap. It's the most expensive thing you own.</p>
+
+      <h2>Data quality cleanup, and the source that breaks for good</h2>
+      <p>Two more that ride along. First, dirty data has a cost: dedup, validation, fixing the records that came back malformed. If 10% of what you acquire needs a human or a second pass to be usable, your real cost per <em>usable</em> document is higher than your cost per fetched one, and that gap is the number that matters. Second, replacement. Sources die. A site relaunches, an API closes, a target wins an injunction against scrapers. The cost of building the next acquisition path for that data is part of the cost of the data, and the more sources you depend on, the more often you're paying it.</p>
+
+      <h2>So what's the number</h2>
+      <p>Add it up and the model looks roughly like this:</p>
+      <pre><code>cost per usable doc =
+    ( proxy + compute + anti-bot vendor ) × retry multiplier
+  + ( engineer hours × loaded rate ) / docs per period
+  + cleanup cost per doc
+  + amortized rebuild cost when the source breaks
+  ────────────────────────────────────────────────────
+              usable docs delivered</code></pre>
+      <p>The exact formula matters less than the habit. Most teams track the first line and ignore the rest, which is why their reported cost and their actual cost are different numbers living in different rooms.</p>
+      <p>Here's the part that surprises people most: once you model it honestly, the rankings flip. The source you thought was cheap, because the proxies were cheap, turns out to be your most expensive data, because it breaks weekly and a senior engineer keeps it alive. The source you thought was expensive runs untouched for months and is actually your best deal per usable record.</p>
+      <p>You can't make a single good build-versus-buy decision until you've done this math. That's a big part of what the Audit produces: a real cost-per-document number for each source you depend on, and a short list of where the money is actually going versus where you think it is.</p>
+    </div>
+
+    <div class="log-cta">
+      Want this math run against your real stack? The <a href="index.html">Data Acquisition Audit</a> includes a per-source cost-per-document model. &mdash; Andrew
+    </div>
+
+    <p class="log-backlink"><a href="logs.html">&larr; All engineering logs</a></p>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Andrew Harris · Vancouver, WA</p>
+  </footer>
+
+  <!-- Analytics: tag CTA clicks on this post -->
+  <script>
+    (function () {
+      var SLUG = 'log2-crawl-economics';
+      document.querySelectorAll('a[href^="mailto:andrew@abharrismethods.com"], .log-cta a[href="index.html"], .log-body a[href="index.html"]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          window.va && window.va('event', { name: 'log_cta_click', post: SLUG });
+        });
+      });
+    })();
+  </script>
+  <!-- Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

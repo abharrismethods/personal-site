@@ -18,6 +18,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" href="favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
 </head>
 <body>
   <!-- Navigation -->
@@ -366,6 +369,36 @@
     })();
   </script>
 
+  <!-- Analytics: conversion events (Audit CTA clicks, feeds-search intent) -->
+  <script>
+    (function () {
+      // Tag every Audit / intake mailto as the primary conversion
+      document.querySelectorAll('a[href^="mailto:andrew@abharrismethods.com"]').forEach(function (a) {
+        var href = a.getAttribute('href');
+        var isAudit = /Data%20Acquisition%20Audit|written%20intake|intake/i.test(href);
+        var section = a.closest('section,main,footer');
+        var location = section ? (section.getAttribute('aria-label') || section.className || 'page') : 'page';
+        a.addEventListener('click', function () {
+          window.va && window.va('event', {
+            name: isAudit ? 'audit_cta_click' : 'email_click',
+            location: location
+          });
+        });
+      });
+
+      // Feeds-search intent — fire once per session on a real query
+      var input = document.getElementById('feeds-search');
+      if (input) {
+        var fired = false;
+        input.addEventListener('input', function () {
+          if (!fired && input.value.trim().length > 2) {
+            fired = true;
+            window.va && window.va('event', { name: 'feeds_search' });
+          }
+        });
+      }
+    })();
+  </script>
   <!-- Vercel Analytics -->
   <script defer src="/_vercel/insights/script.js"></script>
 </body>

@@ -15,6 +15,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" href="favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
 </head>
 <body>
   <!-- Navigation -->
@@ -331,6 +334,20 @@
     <p>&copy; 2026 Andrew Harris · Vancouver, WA</p>
   </footer>
 
+  <!-- Analytics: portfolio → services intent + email clicks -->
+  <script>
+    (function () {
+      var cross = document.querySelector('.portfolio-crosslink a[href="index.html"]');
+      if (cross) cross.addEventListener('click', function () {
+        window.va && window.va('event', { name: 'portfolio_to_services' });
+      });
+      document.querySelectorAll('a[href^="mailto:andrew@abharrismethods.com"]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          window.va && window.va('event', { name: 'email_click', location: 'portfolio' });
+        });
+      });
+    })();
+  </script>
   <!-- Vercel Analytics -->
   <script defer src="/_vercel/insights/script.js"></script>
 </body>

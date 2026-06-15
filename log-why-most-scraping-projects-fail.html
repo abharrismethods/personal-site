@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#5cb85c" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1411" media="(prefers-color-scheme: dark)">
+  <title>Why most scraping projects fail | Engineering Logs | Andrew Harris</title>
+  <meta name="description" content="The four failure modes I see across audits: source before architecture, cost-per-document never measured, single-trick anti-bot, and scrape-now-structure-later pipelines.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" href="favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-link">Services</a>
+    <a href="portfolio.html" class="nav-link">Portfolio</a>
+    <a href="logs.html" class="nav-link active">Engineering Logs</a>
+    <a href="resume.html" class="nav-link">Resume</a>
+  </nav>
+
+  <article class="log-article">
+    <div class="offer-eyebrow">Engineering Log #1</div>
+    <h1 class="offer-title">Why most scraping projects fail</h1>
+    <p class="log-meta">June 2026 · ~6 min read</p>
+
+    <div class="log-body">
+      <p>Most scraping projects don't fail because the target site was too hard. They fail months earlier, in decisions nobody wrote down. By the time someone calls me, the crawler is the symptom, not the disease.</p>
+
+      <p>I've seen the same four failures over and over, across a decade of running acquisition at ZoomInfo and now in audits. None of them are exotic. That's the frustrating part.</p>
+
+      <h2>They picked the source before they picked the architecture</h2>
+      <p>Someone in a meeting says "we need LinkedIn data" or "we need every law firm in the country," and an engineer goes off to scrape that specific thing. The scraper works on a laptop. It pulls a few thousand records. Everyone's happy.</p>
+      <p>Then the requirements show up that were always going to show up. Refresh it weekly. Dedup against what we already have. Handle the company that changed its name. Track when a field goes from populated to empty, because that turns out to be the signal the product actually sells.</p>
+      <p>A scraper isn't an architecture. The architecture is the scheduling, the dedup keys, the change detection, the way you store raw payloads so you can re-parse them when the schema shifts. If you build the scraper first and bolt those on later, you rebuild the scraper. I've watched teams do this three times for the same source before someone asks why.</p>
+      <p><strong>Decide how you'll know a record changed before you write a single line that fetches one.</strong></p>
+
+      <h2>Nobody measured cost per document</h2>
+      <p>Ask a team what it costs them to acquire one record and you usually get a blank look, then a number that's only the proxy bill. The proxy bill is maybe a third of the real cost. (I wrote a whole separate log on this, because it's where most of the money quietly leaks.)</p>
+      <p>The reason this kills projects: without a cost-per-document number, you can't tell whether the project is succeeding. A crawl that works but costs $4 a record to maintain is a failure dressed as a success. You won't find out until the cloud bill arrives and someone senior asks what the line item is. Then the project gets cancelled for being expensive, when really it was just never measured.</p>
+
+      <h2>The anti-bot strategy was one trick</h2>
+      <p>This is the technical failure people expect, and it's real, but it's almost never about cleverness. It's about fragility.</p>
+      <p>A team finds one technique that works on a hard target. A specific header set. A particular proxy vendor. A browser automation trick that slips past detection today. They ship it. It works. And the entire pipeline now depends on a single thing that the target site, or the vendor, can change without warning.</p>
+      <p>When I built <a href="https://github.com/abharrismethods/uktena" target="_blank" rel="noopener">Uktena</a>, the whole point was that it never bets on one technique. It runs a three-tier fallback: a cheap fast path first, then a heavier path, then a full stealth browser with residential rotation only when the first two fail. The cheap path handles most traffic. The expensive path is there so a target hardening its defenses is a cost increase, not an outage. That's the difference between "our crawler is down" and "our crawler got 8% more expensive this week." One is a fire drill. The other is a Tuesday.</p>
+      <p>If your reliability depends on one trick, you don't have a strategy. You have a countdown.</p>
+
+      <h2>"Scrape now, structure later" structures never</h2>
+      <p>This is the one that looks fine the longest. The team fetches raw HTML, dumps it somewhere, and tells themselves they'll extract clean fields when they need them. Acquisition feels done. Everyone moves on.</p>
+      <p>Six months later there are two terabytes of raw pages and no clean dataset, because "later" is always lower priority than whatever's on fire today. The extraction work that should have been part of the pipeline becomes a project of its own that nobody wants to staff. The data exists and is simultaneously useless. For an AI team this is fatal, because the model needs structured, current input, not a landfill of HTML from last spring.</p>
+      <p>Structure-first is more work up front and it's the only version that ships. You don't have to extract everything. You do have to extract enough that the output is usable the day it lands, and you have to keep the raw payload so you can go back when requirements grow.</p>
+
+      <h2>The pattern under the pattern</h2>
+      <p>Every one of these is the same mistake wearing a different coat: treating acquisition as a script you write once instead of a system you operate. Scripts are cheap and they rot. Systems cost more up front and they compound.</p>
+      <p>The good news is that the failures are predictable, which means they're catchable before you've spent two quarters and a headcount finding out the hard way. That's most of what an audit is. I look at the four things above, in that order, and tell you which one is going to bite you. Usually you already suspect which one. You just haven't had a reason to say it out loud.</p>
+    </div>
+
+    <div class="log-cta">
+      If your crawler is the symptom and you want to find the disease, the <a href="index.html">Data Acquisition Audit</a> is a written review of exactly these failure modes in your stack. &mdash; Andrew
+    </div>
+
+    <p class="log-backlink"><a href="logs.html">&larr; All engineering logs</a></p>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Andrew Harris · Vancouver, WA</p>
+  </footer>
+
+  <!-- Analytics: tag CTA clicks on this post -->
+  <script>
+    (function () {
+      var SLUG = 'log1-scraping-fails';
+      document.querySelectorAll('a[href^="mailto:andrew@abharrismethods.com"], .log-cta a[href="index.html"], .log-body a[href="index.html"]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          window.va && window.va('event', { name: 'log_cta_click', post: SLUG });
+        });
+      });
+    })();
+  </script>
+  <!-- Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

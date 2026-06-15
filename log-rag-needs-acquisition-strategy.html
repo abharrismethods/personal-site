@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#5cb85c" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1411" media="(prefers-color-scheme: dark)">
+  <title>Why RAG fails without an acquisition strategy | Engineering Logs | Andrew Harris</title>
+  <meta name="description" content="Embedding is the easy 20%. The five acquisition decisions that actually decide whether an AI product works: source selection, extraction, structure, refresh, and continuous coverage.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" href="favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-link">Services</a>
+    <a href="portfolio.html" class="nav-link">Portfolio</a>
+    <a href="logs.html" class="nav-link active">Engineering Logs</a>
+    <a href="resume.html" class="nav-link">Resume</a>
+  </nav>
+
+  <article class="log-article">
+    <div class="offer-eyebrow">Engineering Log #4</div>
+    <h1 class="offer-title">Why RAG fails without an acquisition strategy</h1>
+    <p class="log-meta">June 2026 · ~7 min read</p>
+
+    <div class="log-body">
+      <p>"We'll just embed everything" is the sentence I hear right before a RAG product plateaus. It sounds like a plan. It's actually the absence of one. Embedding is the easy 20% that everyone demos. The data that goes into the embeddings is the hard 80% that decides whether the product is any good, and it's the part most teams treat as already solved.</p>
+      <p>I've built the acquisition side of this at scale, the extraction and ingestion pipelines feeding LLMs and smaller domain-specific models, and <a href="https://github.com/abharrismethods/courtwise" target="_blank" rel="noopener">Courtwise</a> is a working reference for the whole chain: crawl, chunk, embed, retrieve, generate, with cost controls at each step. What follows is where AI products actually break, in order of how often I see it.</p>
+
+      <h2>Garbage in, confident garbage out</h2>
+      <p>A retrieval system is only as good as the corpus behind it. Feed it stale, partial, or dirty data and it will retrieve stale, partial, dirty data and present it with total confidence, which is worse than retrieving nothing, because the user believes it. The model can't tell that the document it's citing is eighteen months out of date. It just answers.</p>
+      <p>So the quality of your AI product is mostly the quality of your acquisition, and acquisition is the part nobody on the ML team owns. The model gets the attention. The data gets a cron job someone wrote once and a quiet assumption that it's fine. It usually isn't.</p>
+
+      <h2>Source selection is a product decision, not a scraping task</h2>
+      <p>Which sources you pull from determines what your product can credibly answer. That's a product and strategy call, and it keeps getting delegated to whoever's writing the crawler, as if it were a technical detail. It isn't. Choosing to cover three authoritative sources deeply beats covering thirty shallow ones, and that choice shapes everything downstream, including what you're allowed to promise a customer. Decide it deliberately, at the top, before anyone writes a fetcher.</p>
+
+      <h2>The extraction tier is where quality is won or lost</h2>
+      <p>Raw HTML is not knowledge. Between the page and the embedding there's an extraction step, and that step is where you either get clean structured text or you get navigation menus, cookie banners, and boilerplate embedded right alongside the content you wanted.</p>
+      <p>This matters more than people expect, because junk in the chunk poisons retrieval. If your embeddings are full of footer text and "accept cookies" prompts, your similarity search surfaces noise, and no amount of prompt engineering downstream fixes a corpus that was dirty going in. Markdown-native, content-only extraction isn't a nicety. It's the difference between retrieval that works and retrieval that's subtly, expensively wrong in ways you won't catch in a demo and will catch in production.</p>
+
+      <h2>Structure-first versus structure-later, again</h2>
+      <p>I made this point in the log on why scraping projects fail, and it's even more lethal for RAG, so it's worth repeating in this context.</p>
+      <p>The tempting path is to embed raw text now and figure out structure later. The problem is that "later" means re-running extraction and re-embedding across your entire corpus every time you realize you needed a field, a date, a source attribution, a chunk boundary that respects document structure. If you embedded blobs, you re-embed everything. If you extracted structure first, you adjust and move on. At small scale this is annoying. At large scale, re-embedding the whole corpus is a budget event you have to schedule and defend, and you'll do almost anything to avoid it, including shipping a worse product.</p>
+      <p>Decide your chunking and your structure before you embed at volume. Re-embedding is the most expensive way to learn this lesson and the most common.</p>
+
+      <h2>Refresh cadence is the question nobody answers</h2>
+      <p>Here's the one that separates a demo from a product. Your corpus was current the day you built it. What about next month? Sources change. Documents get superseded. Facts go stale. If your acquisition has no refresh strategy, your product degrades quietly from the day you launch, and the degradation is invisible until a user catches the model citing something that's no longer true.</p>
+      <p>Different data has different half-lives. Pricing data is stale in hours. A legal statute might be good for years until the day it very much isn't. Your refresh cadence has to match the half-life of each source, and that's an acquisition design decision that has to exist before launch, not a patch you apply after the first embarrassing answer.</p>
+
+      <h2>Continuous coverage, the part nobody talks about</h2>
+      <p>One-time scrapes feel like acquisition and aren't. A real ingestion pipeline keeps acquiring: new documents as they appear, changes as they happen, with monitoring so you know when a source goes dark instead of finding out from a user. This is operations, not a project, and it's the gap between "we built a RAG demo" and "we run a RAG product." Continuous coverage is unglamorous and it's most of the actual work, which is exactly why it gets skipped.</p>
+
+      <h2>The uncomfortable summary</h2>
+      <p>If you're building an AI product, your real moat probably isn't the model. You're likely using the same foundation models as everyone else. The moat is the data, and the data is an acquisition problem: which sources, extracted how cleanly, structured how deliberately, refreshed how often, monitored by whom. Teams pour their attention into the model layer because it's the interesting part, and let the data layer run on assumptions. Then they wonder why the product feels thin next to a competitor that took acquisition seriously.</p>
+      <p>"We'll just embed everything" isn't a strategy. The strategy is the five decisions above, made on purpose, before you scale. Get them right and the model layer mostly takes care of itself. Get them wrong and no model saves you.</p>
+    </div>
+
+    <div class="log-cta">
+      If your AI product is plateauing on data quality, the <a href="index.html">Data Acquisition Audit</a> reviews your ingestion pipeline end to end: source selection, extraction, structure, and refresh. &mdash; Andrew
+    </div>
+
+    <p class="log-backlink"><a href="logs.html">&larr; All engineering logs</a></p>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Andrew Harris · Vancouver, WA</p>
+  </footer>
+
+  <!-- Analytics: tag CTA clicks on this post -->
+  <script>
+    (function () {
+      var SLUG = 'log4-rag-acquisition';
+      document.querySelectorAll('a[href^="mailto:andrew@abharrismethods.com"], .log-cta a[href="index.html"], .log-body a[href="index.html"]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          window.va && window.va('event', { name: 'log_cta_click', post: SLUG });
+        });
+      });
+    })();
+  </script>
+  <!-- Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
