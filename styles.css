@@ -1618,3 +1618,30 @@ a:hover {
 .log-cta a { color: var(--accent); font-weight: 600; }
 .log-backlink { margin-top: 2rem; font-size: 0.9rem; }
 .log-backlink a { color: var(--accent); }
+
+/* ─── Brand logo: nav (upper-left, sticky) + footer (centered) ─── */
+.nav-brand {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+.nav-logo {
+  height: 36px;
+  width: 36px;
+  display: block;
+}
+.footer-logo {
+  display: block;
+  height: 24px;
+  width: auto;
+  margin: 0 auto 0.85rem;
+  opacity: 0.9;
+}
+@media (max-width: 640px) {
+  .nav-brand { left: 0.5rem; }
+  .nav-logo { height: 30px; width: 30px; }
+}
