@@ -1620,6 +1620,7 @@ a:hover {
 .log-backlink a { color: var(--accent); }
 
 /* ─── Brand logo: nav (upper-left, sticky) + footer (centered) ─── */
+.nav { min-height: 124px; align-items: center; }
 .nav-brand {
   position: absolute;
   left: 1rem;
@@ -1630,8 +1631,8 @@ a:hover {
   line-height: 0;
 }
 .nav-logo {
-  height: 36px;
-  width: 36px;
+  height: 108px;
+  width: 108px;
   display: block;
 }
 .footer-logo {
@@ -1642,6 +1643,7 @@ a:hover {
   opacity: 0.9;
 }
 @media (max-width: 640px) {
+  .nav { min-height: 104px; }
   .nav-brand { left: 0.5rem; }
-  .nav-logo { height: 30px; width: 30px; }
+  .nav-logo { height: 90px; width: 90px; }
 }
