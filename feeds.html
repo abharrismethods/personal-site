@@ -25,12 +25,12 @@
 <body>
   <!-- Navigation -->
   <nav class="nav">
-    <a class="nav-brand" href="index.html" aria-label="AB Harris Methods home"><img src="abh-avatar.svg" alt="AB Harris Methods" class="nav-logo"></a>
-    <a href="index.html" class="nav-link">Services</a>
-    <a href="portfolio.html" class="nav-link">Portfolio</a>
-    <a href="logs.html" class="nav-link">Engineering Logs</a>
-    <a href="feeds.html" class="nav-link active">Feeds</a>
-    <a href="resume.html" class="nav-link">Resume</a>
+    <a class="nav-brand" href="/" aria-label="AB Harris Methods home"><img src="abh-avatar.svg" alt="AB Harris Methods" class="nav-logo"></a>
+    <a href="/" class="nav-link">Services</a>
+    <a href="portfolio" class="nav-link">Portfolio</a>
+    <a href="logs" class="nav-link">Engineering Logs</a>
+    <a href="feeds" class="nav-link active">Feeds</a>
+    <a href="resume" class="nav-link">Resume</a>
   </nav>
 
   <!-- Header -->
@@ -41,7 +41,7 @@
       <h1 class="offer-title">Productized data feeds, on the same infrastructure I deploy for clients.</h1>
       <p class="offer-name">60+ recurring sources · scoped to your input list · delivered to S3, a webhook, or your database</p>
       <p class="offer-positioning">
-        Already know exactly what you need? Pick a source below. Each feed is scoped to an input list you provide, and the real quote scales with list size and refresh cadence. Not sure which feed, or whether to build vs. buy? Start with the <a href="index.html">Data Acquisition Audit</a> instead.
+        Already know exactly what you need? Pick a source below. Each feed is scoped to an input list you provide, and the real quote scales with list size and refresh cadence. Not sure which feed, or whether to build vs. buy? Start with the <a href="/">Data Acquisition Audit</a> instead.
       </p>
       <div class="chip-row">
         <span class="chip chip-accent">60+ sources</span>
@@ -53,7 +53,7 @@
 
   <main class="container">
     <p class="portfolio-crosslink">
-      Most engagements start with the <a href="index.html">Data Acquisition Audit</a> - the feeds below are the self-serve on-ramp.
+      Most engagements start with the <a href="/">Data Acquisition Audit</a> - the feeds below are the self-serve on-ramp.
     </p>
 
     <p class="feeds-intro">
@@ -135,7 +135,7 @@
     <div class="cta-card">
       <p class="cta-lead">If you're choosing between feeds, or weighing build vs. buy, the Data Acquisition Audit gives you a written answer you can act on, with or without me. For a one-off transactional feed you already know you want, email <a href="mailto:andrew@abharrismethods.com?subject=Custom%20feed%20quote">andrew@abharrismethods.com</a> for a quote.</p>
       <div class="cta-actions">
-        <a class="btn-primary" href="index.html">Start with the Audit →</a>
+        <a class="btn-primary" href="/">Start with the Audit →</a>
       </div>
     </div>
   </main>
@@ -183,7 +183,7 @@
           window.va && window.va('event', { name: 'email_click', data: { location: 'feeds' } });
         });
       });
-      var audit = document.querySelector('.cta-actions a[href="index.html"]');
+      var audit = document.querySelector('.cta-actions a[href="/"]');
       if (audit) audit.addEventListener('click', function () {
         window.va && window.va('event', { name: 'audit_cta_click', data: { location: 'feeds' } });
       });

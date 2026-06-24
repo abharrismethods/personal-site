@@ -22,12 +22,12 @@
 <body>
   <!-- Navigation -->
   <nav class="nav">
-    <a class="nav-brand" href="index.html" aria-label="AB Harris Methods home"><img src="abh-avatar.svg" alt="AB Harris Methods" class="nav-logo"></a>
-    <a href="index.html" class="nav-link">Services</a>
-    <a href="portfolio.html" class="nav-link active">Portfolio</a>
-    <a href="logs.html" class="nav-link">Engineering Logs</a>
-    <a href="feeds.html" class="nav-link">Feeds</a>
-    <a href="resume.html" class="nav-link">Resume</a>
+    <a class="nav-brand" href="/" aria-label="AB Harris Methods home"><img src="abh-avatar.svg" alt="AB Harris Methods" class="nav-logo"></a>
+    <a href="/" class="nav-link">Services</a>
+    <a href="portfolio" class="nav-link active">Portfolio</a>
+    <a href="logs" class="nav-link">Engineering Logs</a>
+    <a href="feeds" class="nav-link">Feeds</a>
+    <a href="resume" class="nav-link">Resume</a>
   </nav>
 
   <!-- Header -->
@@ -67,7 +67,7 @@
 
   <main class="container">
     <p class="portfolio-crosslink">
-      Looking to hire me? See <a href="index.html">Services</a> - most engagements start with the Data Acquisition Audit.
+      Looking to hire me? See <a href="/">Services</a> - most engagements start with the Data Acquisition Audit.
     </p>
 
     <!-- Nodesnack -->
@@ -305,7 +305,7 @@
   <!-- Analytics: portfolio → services intent + email clicks -->
   <script>
     (function () {
-      var cross = document.querySelector('.portfolio-crosslink a[href="index.html"]');
+      var cross = document.querySelector('.portfolio-crosslink a[href="/"]');
       if (cross) cross.addEventListener('click', function () {
         window.va && window.va('event', { name: 'portfolio_to_services' });
       });

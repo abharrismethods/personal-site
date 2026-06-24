@@ -25,12 +25,12 @@
 <body>
   <!-- Navigation -->
   <nav class="nav">
-    <a class="nav-brand" href="index.html" aria-label="AB Harris Methods home"><img src="abh-avatar.svg" alt="AB Harris Methods" class="nav-logo"></a>
-    <a href="index.html" class="nav-link">Services</a>
-    <a href="portfolio.html" class="nav-link">Portfolio</a>
-    <a href="logs.html" class="nav-link active">Engineering Logs</a>
-    <a href="feeds.html" class="nav-link">Feeds</a>
-    <a href="resume.html" class="nav-link">Resume</a>
+    <a class="nav-brand" href="/" aria-label="AB Harris Methods home"><img src="abh-avatar.svg" alt="AB Harris Methods" class="nav-logo"></a>
+    <a href="/" class="nav-link">Services</a>
+    <a href="portfolio" class="nav-link">Portfolio</a>
+    <a href="logs" class="nav-link active">Engineering Logs</a>
+    <a href="feeds" class="nav-link">Feeds</a>
+    <a href="resume" class="nav-link">Resume</a>
   </nav>
 
   <article class="log-article">
@@ -79,10 +79,10 @@
     </div>
 
     <div class="log-cta">
-      Want this math run against your real stack? The <a href="index.html">Data Acquisition Audit</a> includes a per-source cost-per-document model. &mdash; Andrew
+      Want this math run against your real stack? The <a href="/">Data Acquisition Audit</a> includes a per-source cost-per-document model. &mdash; Andrew
     </div>
 
-    <p class="log-backlink"><a href="logs.html">&larr; All engineering logs</a></p>
+    <p class="log-backlink"><a href="logs">&larr; All engineering logs</a></p>
   </article>
 
   <!-- Footer -->
@@ -95,7 +95,7 @@
   <script>
     (function () {
       var SLUG = 'log2-crawl-economics';
-      document.querySelectorAll('a[href^="mailto:andrew@abharrismethods.com"], .log-cta a[href="index.html"], .log-body a[href="index.html"]').forEach(function (a) {
+      document.querySelectorAll('a[href^="mailto:andrew@abharrismethods.com"], .log-cta a[href="/"], .log-body a[href="/"]').forEach(function (a) {
         a.addEventListener('click', function () {
           window.va && window.va('event', { name: 'log_cta_click', data: { post: SLUG } });
         });
