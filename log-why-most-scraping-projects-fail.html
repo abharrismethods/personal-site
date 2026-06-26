@@ -9,19 +9,19 @@
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#5cb85c" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0e1411" media="(prefers-color-scheme: dark)">
-  <title>Why most scraping projects fail | Engineering Logs | Andrew Harris</title>
-  <meta name="description" content="The four failure modes I see across audits: source before architecture, cost-per-document never measured, single-trick anti-bot, and scrape-now-structure-later pipelines.">
+  <title>Why most scraping projects die in month three | Engineering Logs | Andrew Harris</title>
+  <meta name="description" content="A scraper that works on a laptop tends to die around month three. The four failure modes I see across audits, and how to catch them in week one.">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="AB Harris Methods">
-  <meta property="og:title" content="Why most scraping projects fail">
-  <meta property="og:description" content="The four failure modes I see across audits: source before architecture, cost-per-document never measured, single-trick anti-bot, and scrape-now-structure-later pipelines.">
+  <meta property="og:title" content="Why most scraping projects die in month three">
+  <meta property="og:description" content="A scraper that works on a laptop tends to die around month three. The four failure modes I see across audits, and how to catch them in week one.">
   <meta property="og:url" content="https://www.abharrismethods.com/log-why-most-scraping-projects-fail">
   <meta property="og:image" content="https://www.abharrismethods.com/og-log-why-most-scraping-projects-fail-v2.png">
   <meta property="og:image:width" content="2400">
   <meta property="og:image:height" content="1260">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Why most scraping projects fail">
-  <meta name="twitter:description" content="The four failure modes I see across audits: source before architecture, cost-per-document never measured, single-trick anti-bot, and scrape-now-structure-later pipelines.">
+  <meta name="twitter:title" content="Why most scraping projects die in month three">
+  <meta name="twitter:description" content="A scraper that works on a laptop tends to die around month three. The four failure modes I see across audits, and how to catch them in week one.">
   <meta name="twitter:image" content="https://www.abharrismethods.com/og-log-why-most-scraping-projects-fail-v2.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,16 +47,18 @@
 
   <article class="log-article">
     <div class="offer-eyebrow">Engineering Log #1</div>
-    <h1 class="offer-title">Why most scraping projects fail</h1>
+    <h1 class="offer-title">Why most scraping projects die in month three</h1>
     <p class="log-meta">June 2026 · ~6 min read</p>
 
     <div class="log-body">
-      <p>Most scraping projects don't fail because the target site was too hard. They fail months earlier, in decisions nobody wrote down. By the time someone calls me, the crawler is the symptom, not the disease.</p>
+      <p>The scraper works on the laptop. It pulls a few thousand records. Everyone's happy. That's month one.</p>
 
-      <p>I've seen the same four failures over and over, across a decade of running acquisition at ZoomInfo and now in audits. None of them are exotic. That's the frustrating part.</p>
+      <p>Month three is when it dies, and almost never because the target site got harder. It dies on decisions nobody wrote down back when the thing looked like it worked. By the time someone calls me, the broken crawler is the symptom, not the disease.</p>
+
+      <p>I've seen the same four failures over and over, across a decade of running acquisition at ZoomInfo and now in audits. None of them are exotic. That's the frustrating part. They're all avoidable, and they all stay invisible right up until the month the project falls over.</p>
 
       <h2>They picked the source before they picked the architecture</h2>
-      <p>Someone in a meeting says "we need LinkedIn data" or "we need every law firm in the country," and an engineer goes off to scrape that specific thing. The scraper works on a laptop. It pulls a few thousand records. Everyone's happy.</p>
+      <p>It starts in a meeting. Someone says "we need LinkedIn data" or "we need every law firm in the country," and an engineer goes off to scrape that one specific thing. The source got picked before anyone asked what shape the system around it needs to be.</p>
       <p>Then the requirements show up that were always going to show up. Refresh it weekly. Dedup against what we already have. Handle the company that changed its name. Track when a field goes from populated to empty, because that turns out to be the signal the product actually sells.</p>
       <p>A scraper isn't an architecture. The architecture is the scheduling, the dedup keys, the change detection, the way you store raw payloads so you can re-parse them when the schema shifts. If you build the scraper first and bolt those on later, you rebuild the scraper. I've watched teams do this three times for the same source before someone asks why.</p>
       <p><strong>Decide how you'll know a record changed before you write a single line that fetches one.</strong></p>
@@ -78,7 +80,7 @@
 
       <h2>The pattern under the pattern</h2>
       <p>Every one of these is the same mistake wearing a different coat: treating acquisition as a script you write once instead of a system you operate. Scripts are cheap and they rot. Systems cost more up front and they compound.</p>
-      <p>The good news is that the failures are predictable, which means they're catchable before you've spent two quarters and a headcount finding out the hard way. That's most of what an audit is. I look at the four things above, in that order, and tell you which one is going to bite you. Usually you already suspect which one. You just haven't had a reason to say it out loud.</p>
+      <p>The good news is that the failures are predictable, which means they're catchable in week one instead of month three, before you've spent two quarters and a headcount finding out the hard way. That's most of what an audit is. I look at the four things above, in that order, and tell you which one is going to bite you. Usually you already suspect which one. You just haven't had a reason to say it out loud.</p>
     </div>
 
     <div class="log-cta">
