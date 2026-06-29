@@ -78,7 +78,7 @@
   <article class="log-article">
     <div class="offer-eyebrow">Engineering Log #4</div>
     <h1 class="offer-title">Why RAG fails without an acquisition strategy</h1>
-    <p class="log-meta">June 2026 · ~7 min read</p>
+    <p class="log-meta">June 2026 · ~8 min read</p>
 
     <div class="log-body">
       <p>"We'll just embed everything" is the sentence I hear right before a RAG product plateaus. It sounds like a plan. It's actually the absence of one. Embedding is the easy 20% that everyone demos. The data that goes into the embeddings is the hard 80% that decides whether the product is any good, and it's the part most teams treat as already solved.</p>
@@ -94,6 +94,9 @@
       <h2>The extraction tier is where quality is won or lost</h2>
       <p>Raw HTML is not knowledge. Between the page and the embedding there's an extraction step, and that step is where you either get clean structured text or you get navigation menus, cookie banners, and boilerplate embedded right alongside the content you wanted.</p>
       <p>This matters more than people expect, because junk in the chunk poisons retrieval. If your embeddings are full of footer text and "accept cookies" prompts, your similarity search surfaces noise, and no amount of prompt engineering downstream fixes a corpus that was dirty going in. Markdown-native, content-only extraction isn't a nicety. It's the difference between retrieval that works and retrieval that's subtly, expensively wrong in ways you won't catch in a demo and will catch in production.</p>
+      <p>But clean text is only the floor. Extraction isn't one technique, it's a decision you make per source. A clean, consistent source with stable markup wants a targeted DOM or rule-based parse: cheapest and most precise. An article-style page wants a readability pass that strips the chrome and emits markdown. The trouble is the sources that are messy, inconsistent, or dense with the entities you actually care about, because that's exactly where a rule-based parse quietly drops half of what matters and a readability pass flattens the structure you needed to keep.</p>
+      <p>That's where model-based extraction earns its cost. Named-entity recognition and layout-aware document models don't just separate content from boilerplate, they recognize what the content is: the people, organizations, dates, prices, and clauses, plus the table and section boundaries that give a chunk its shape. Run that and your chunks carry structured metadata, not just a wall of text. The payoff lands on retrieval, because you can filter and route by entity or field instead of asking vector similarity to guess. It's the difference between "find documents that mention Acme" and "find the renewal date in Acme's contract."</p>
+      <p>The strategy mistake is going to one extreme. Teams either regex everything, which breaks on the first layout change, or push every page through an LLM extractor, which is accurate and ruinous at volume. The right move is the same tiered discipline I use for anti-bot: cheap deterministic extraction first, escalate to model-based recognition only on the sources valuable or messy enough to deserve it. Extraction method is a cost-versus-fidelity decision, and like the rest of acquisition, it should be made on purpose.</p>
 
       <h2>Structure-first versus structure-later, again</h2>
       <p>I made this point in <a href="log-why-most-scraping-projects-fail">the log on why scraping projects die</a>, and it's even more lethal for RAG.</p>
