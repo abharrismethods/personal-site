@@ -42,7 +42,7 @@
     "description": "Embedding is the easy 20%. The five acquisition decisions that actually decide whether an AI product works: source selection, extraction, structure, refresh, and continuous coverage.",
     "image": "https://www.abharrismethods.com/og-log-rag-needs-acquisition-strategy-v2.png",
     "datePublished": "2026-06-14",
-    "dateModified": "2026-06-14",
+    "dateModified": "2026-06-28",
     "author": {
       "@type": "Person",
       "name": "Andrew Harris",
@@ -82,7 +82,7 @@
 
     <div class="log-body">
       <p>"We'll just embed everything" is the sentence I hear right before a RAG product plateaus. It sounds like a plan. It's actually the absence of one. Embedding is the easy 20% that everyone demos. The data that goes into the embeddings is the hard 80% that decides whether the product is any good, and it's the part most teams treat as already solved.</p>
-      <p>I've built the acquisition side of this at scale, the extraction and ingestion pipelines feeding LLMs and smaller domain-specific models, and <a href="https://github.com/abharrismethods/courtwise" target="_blank" rel="noopener">Courtwise</a> is a working reference for the whole chain: crawl, chunk, embed, retrieve, generate, with cost controls at each step. What follows is where AI products actually break, in order of how often I see it.</p>
+      <p>I've built the acquisition side of this at scale, the extraction and ingestion pipelines feeding LLMs and smaller domain-specific models, end to end across the whole chain: crawl, chunk, embed, retrieve, generate, with cost controls at each step. What follows is where AI products actually break, in order of how often I see it.</p>
 
       <h2>Garbage in, confident garbage out</h2>
       <p>A retrieval system is only as good as the corpus behind it. Feed it stale, partial, or dirty data and it will retrieve stale, partial, dirty data and present it with total confidence, which is worse than retrieving nothing, because the user believes it. The model can't tell that the document it's citing is eighteen months out of date. It just answers.</p>
@@ -96,7 +96,7 @@
       <p>This matters more than people expect, because junk in the chunk poisons retrieval. If your embeddings are full of footer text and "accept cookies" prompts, your similarity search surfaces noise, and no amount of prompt engineering downstream fixes a corpus that was dirty going in. Markdown-native, content-only extraction isn't a nicety. It's the difference between retrieval that works and retrieval that's subtly, expensively wrong in ways you won't catch in a demo and will catch in production.</p>
 
       <h2>Structure-first versus structure-later, again</h2>
-      <p>I made this point in the log on why scraping projects fail, and it's even more lethal for RAG, so it's worth repeating in this context.</p>
+      <p>I made this point in <a href="log-why-most-scraping-projects-fail">the log on why scraping projects die</a>, and it's even more lethal for RAG.</p>
       <p>The tempting path is to embed raw text now and figure out structure later. The problem is that "later" means re-running extraction and re-embedding across your entire corpus every time you realize you needed a field, a date, a source attribution, a chunk boundary that respects document structure. If you embedded blobs, you re-embed everything. If you extracted structure first, you adjust and move on. At small scale this is annoying. At large scale, re-embedding the whole corpus is a budget event you have to schedule and defend, and you'll do almost anything to avoid it, including shipping a worse product.</p>
       <p>Decide your chunking and your structure before you embed at volume. Re-embedding is the most expensive way to learn this lesson and the most common.</p>
 
