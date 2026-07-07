@@ -42,7 +42,12 @@
   </url>
   <url>
     <loc>https://www.abharrismethods.com/log-rag-needs-acquisition-strategy</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-06-28</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.abharrismethods.com/log-scraper-works-in-dev-dies-in-prod</loc>
+    <lastmod>2026-07-06</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>
