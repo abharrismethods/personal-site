@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#5cb85c" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1411" media="(prefers-color-scheme: dark)">
+  <title>County assessor and recorder data feed (3,000+ counties) | Andrew Harris</title>
+  <meta name="description" content="Monthly delta of property ownership, deeds, tax assessments, liens, and mortgages across 3,000+ US county assessor and recorder systems. Delivered to S3, webhook, or your database from $2,800/mo.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AB Harris Methods">
+  <meta property="og:title" content="County assessor and recorder data feed (3,000+ counties)">
+  <meta property="og:description" content="Ownership, deeds, tax assessments, liens, and mortgages across 3,000+ US counties, delivered as a monthly delta.">
+  <meta property="og:url" content="https://www.abharrismethods.com/feed-county-assessor">
+  <link rel="canonical" href="https://www.abharrismethods.com/feed-county-assessor">
+  <meta property="og:image" content="https://www.abharrismethods.com/og-default-v2.png">
+  <meta property="og:image:width" content="2400">
+  <meta property="og:image:height" content="1260">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="County assessor and recorder data feed (3,000+ counties)">
+  <meta name="twitter:description" content="Ownership, deeds, tax assessments, liens, and mortgages across 3,000+ US counties, delivered as a monthly delta.">
+  <meta name="twitter:image" content="https://www.abharrismethods.com/og-default-v2.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=4">
+  <link rel="icon" type="image/png" href="favicon-32.png?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "County Assessor and Recorder Data Feed",
+    "description": "Monthly delta of property ownership, deeds, tax assessments, liens, and mortgages across 3,000+ US county assessor and recorder systems.",
+    "brand": { "@type": "Brand", "name": "AB Harris Methods" },
+    "url": "https://www.abharrismethods.com/feed-county-assessor",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": "2800",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "2800",
+        "priceCurrency": "USD",
+        "unitText": "MONTH"
+      },
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "Organization", "name": "AB Harris Methods" }
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="header">
+    <nav class="nav">
+      <a class="nav-brand" href="/" aria-label="AB Harris Methods home"><img src="abh-avatar.svg" alt="AB Harris Methods" class="nav-logo"></a>
+      <a href="/" class="nav-link">Services</a>
+      <a href="portfolio" class="nav-link">Portfolio</a>
+      <a href="feeds" class="nav-link active">Feeds</a>
+      <a href="stacks" class="nav-link">Stacks</a>
+      <a href="logs" class="nav-link">Engineering Logs</a>
+    </nav>
+  </header>
+
+  <article class="log-article">
+    <div class="offer-eyebrow">Data feed · Property &amp; public records</div>
+    <h1 class="offer-title">County assessor and recorder data feed</h1>
+    <p class="log-meta">3,000+ US counties · monthly delta · from $2,800 / mo</p>
+
+    <dl class="feed-facts">
+      <div class="feed-fact"><dt>Coverage</dt><dd>3,000+ counties</dd></div>
+      <div class="feed-fact"><dt>Cadence</dt><dd>Monthly delta</dd></div>
+      <div class="feed-fact"><dt>Typical volume</dt><dd>~200k records</dd></div>
+      <div class="feed-fact"><dt>Difficulty</dt><dd>High</dd></div>
+      <div class="feed-fact"><dt>Price</dt><dd>$2,800 / mo</dd></div>
+    </dl>
+
+    <div class="log-body">
+      <h2>What's in it</h2>
+      <p>Property-level records pulled from county assessor and recorder offices, scoped to the counties you name:</p>
+      <ul class="experience-list">
+        <li><strong>Ownership</strong> - current owner of record, mailing address, ownership transfers with dates</li>
+        <li><strong>Deeds</strong> - recorded instrument type, grantor and grantee, consideration amount, recording date</li>
+        <li><strong>Tax assessments</strong> - assessed and market value, land versus improvement split, exemptions, tax year</li>
+        <li><strong>Liens and encumbrances</strong> - tax liens, mechanic's liens, judgments recorded against the parcel</li>
+        <li><strong>Mortgages</strong> - lender, amount, recording date, releases and reconveyances</li>
+      </ul>
+      <p>Normalized to one schema across every county, with a stable parcel identifier so the same property is the same row month over month. That last part is most of the work.</p>
+
+      <h2>Delivery</h2>
+      <p>Monthly delta, meaning you get what changed rather than a full re-scan you have to diff yourself. Lands in S3, a webhook, or straight into your database. Typical volume is around 200k changed records per month at normal client county coverage; the quote scales with how many counties you cover and how often you want them refreshed.</p>
+
+      <div class="feed-hard">
+        <h2>Why this one is hard</h2>
+        <p>There is no national property database. There are roughly 3,141 counties and county-equivalents, and each one runs its own system. That is the entire problem, and it is a jurisdictional problem wearing a technical costume.</p>
+        <p>In practice you are dealing with four or five different vendor platforms that serve most of the population, a long tail of several hundred bespoke county-built portals, and a stubborn remainder where the record is a scanned PDF or a form that only accepts one parcel lookup at a time. The vendor platforms are the easy part and they are still not easy: each deployment is configured differently, and counties upgrade on their own schedule with no notice.</p>
+        <p>The failure mode that catches teams is not the initial build. It is that a county changes its portal, one source out of 3,000 goes quiet, and nothing alerts because the pipeline is still returning 200s and writing rows for the other 2,999. You find out a quarter later when someone notices Maricopa hasn't updated since March. Running this feed means per-county freshness monitoring, not aggregate success rates, and that is the piece most in-house builds skip.</p>
+        <p>Then there is normalization. Counties disagree about what a deed type is called, how consideration is recorded, and whether a parcel number has dashes. Making 3,000 vocabularies into one schema is ongoing work, not a one-time mapping.</p>
+      </div>
+
+      <h2>Build versus buy</h2>
+      <p>Build it yourself if you need three counties. The per-county work is tractable and you will not miss the monitoring layer at that scale.</p>
+      <p>Past roughly fifty counties the math changes. You are no longer maintaining scrapers, you are running a small operations function: portal changes, freshness alerts, schema drift, and the counties that go down for a week without explanation. That is a recurring engineer-hours cost that does not shrink as you add counties, and it is the number to put next to $2,800/mo before you decide. <a href="log-crawl-economics">Crawl economics</a> walks through how to model it honestly.</p>
+
+      <h2>Related</h2>
+      <p>This feed is the anchor of the <a href="stacks">Property &amp; Public Record Stack</a> ($5,500/mo), which adds state court systems, Secretary of State filings, and Zillow for teams that need the full encumbrance and entity picture rather than parcel data alone.</p>
+    </div>
+
+    <div class="log-cta">
+      Not sure whether to build this or buy it? Send me the counties you need and I'll come back inside 48 hours with a <a href="mailto:andrew@abharrismethods.com?subject=Feed%20Feasibility%20Check%20%E2%80%94%20County%20Assessor&body=Hi%20Andrew%20%E2%80%94%20requesting%20a%20Feed%20Feasibility%20Check%20on%20county%20assessor%20data.%0A%0ACounties%20we%20need%3A%0A%0AFields%20that%20matter%20most%3A%0A%0AVolume%20%28records%20/%20month%29%3A%0A%0AWhat%20we%27ve%20tried%3A%0A%0AThanks%2C%0A">free Feed Feasibility Check</a>: what's acquirable, rough cost per record, and my honest read on build versus buy. &mdash; Andrew
+    </div>
+
+    <div class="cta-actions">
+      <a class="btn-primary" href="mailto:andrew@abharrismethods.com?subject=County%20Assessor%20feed%20%E2%80%94%20quote&body=Hi%20Andrew%20%E2%80%94%20interested%20in%20the%20county%20assessor%20/%20recorder%20feed.%0A%0ACounties%20we%20need%3A%0A%0ARefresh%20cadence%3A%0A%0AWhere%20it%20should%20land%20%28S3%20/%20webhook%20/%20database%29%3A%0A%0AWhat%20we%20use%20today%3A%0A%0AThanks%2C%0A">Get a quote for this feed →</a>
+      <a class="btn-secondary" href="stacks">See the Property Stack →</a>
+    </div>
+
+    <p class="log-backlink"><a href="feeds">&larr; All feeds</a></p>
+  </article>
+
+  <footer class="footer">
+    <img src="abh-logo.svg" alt="AB Harris Methods" class="footer-logo">
+    <p>&copy; 2026 Andrew Harris · Vancouver, WA</p>
+  </footer>
+
+  <script>
+    (function () {
+      var FEED = 'county-assessor';
+      document.querySelectorAll('a[href^="mailto:andrew@abharrismethods.com"]').forEach(function (a) {
+        var name = /Feasibility/i.test(a.getAttribute('href')) ? 'feasibility_check_request' : 'feed_quote_request';
+        a.addEventListener('click', function () {
+          window.va && window.va('event', { name: name, data: { feed: FEED } });
+        });
+      });
+    })();
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

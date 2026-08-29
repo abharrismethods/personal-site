@@ -12,13 +12,8 @@
   </url>
   <url>
     <loc>https://www.abharrismethods.com/feeds</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.abharrismethods.com/resume</loc>
-    <lastmod>2026-06-14</lastmod>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.abharrismethods.com/logs</loc>
@@ -49,5 +44,15 @@
     <loc>https://www.abharrismethods.com/log-scraper-works-in-dev-dies-in-prod</loc>
     <lastmod>2026-07-06</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.abharrismethods.com/stacks</loc>
+    <lastmod>2026-08-29</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.abharrismethods.com/feed-county-assessor</loc>
+    <lastmod>2026-08-29</lastmod>
+    <priority>0.8</priority>
   </url>
 </urlset>

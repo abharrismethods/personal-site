@@ -1726,3 +1726,90 @@ a:hover {
   .nav-logo { height: 44px; width: 44px; }
   .nav-link { padding: 0.35rem 0.85rem; font-size: 0.85rem; }
 }
+
+/* ── Stacks page ───────────────────────────────────────────────── */
+.stack-card { position: relative; }
+.stack-buyer {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+}
+.stack-price-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.stack-strike {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+.stack-save {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.stack-feeds {
+  list-style: none;
+  padding: 0;
+  margin: 0.9rem 0 0;
+  display: grid;
+  gap: 0.35rem;
+}
+.stack-feeds li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.9rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.stack-feeds li:last-child { border-bottom: 0; }
+.stack-feeds .stack-feed-price {
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Feed detail pages + linked source names in the feeds table */
+.feeds-table a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--accent); }
+.feeds-table a:hover { color: var(--accent); }
+.feed-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0 2rem;
+}
+.feed-fact {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.8rem 0.95rem;
+  background: var(--bg-card);
+}
+.feed-fact dt {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 0.3rem;
+}
+.feed-fact dd { margin: 0; font-size: 1.05rem; font-weight: 600; }
+.feed-hard {
+  border-left: 3px solid var(--accent);
+  padding-left: 1.1rem;
+  margin: 1.75rem 0;
+}
+
+/* Two CTAs now sit side by side under the feeds/stacks section on the home page */
+.feeds-browse {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
