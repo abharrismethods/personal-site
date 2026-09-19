@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#5cb85c" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1411" media="(prefers-color-scheme: dark)">
+  <title>OFAC SDN sanctions list data feed (daily delta, change tracking) | Andrew Harris</title>
+  <meta name="description" content="The OFAC SDN and consolidated sanctions lists as a typed delta: new, updated, and delisted entries with field-level changesets, alias weighting, and hourly change detection. From $250/mo.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AB Harris Methods">
+  <meta property="og:title" content="OFAC SDN sanctions list data feed (daily delta, change tracking)">
+  <meta property="og:description" content="OFAC SDN and consolidated sanctions lists delivered as a typed delta with field-level changesets and hourly change detection.">
+  <meta property="og:url" content="https://www.abharrismethods.com/feed-ofac-sdn">
+  <link rel="canonical" href="https://www.abharrismethods.com/feed-ofac-sdn">
+  <meta property="og:image" content="https://www.abharrismethods.com/og-default-v2.png">
+  <meta property="og:image:width" content="2400">
+  <meta property="og:image:height" content="1260">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OFAC SDN sanctions list data feed (daily delta, change tracking)">
+  <meta name="twitter:description" content="OFAC SDN and consolidated sanctions lists delivered as a typed delta with field-level changesets and hourly change detection.">
+  <meta name="twitter:image" content="https://www.abharrismethods.com/og-default-v2.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=4">
+  <link rel="icon" type="image/png" href="favicon-32.png?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "OFAC Sanctions (SDN) Data Feed",
+    "description": "OFAC SDN and consolidated sanctions lists delivered as a typed delta with field-level changesets and hourly change detection.",
+    "brand": { "@type": "Brand", "name": "AB Harris Methods" },
+    "url": "https://www.abharrismethods.com/feed-ofac-sdn",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": "250",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "250",
+        "priceCurrency": "USD",
+        "unitText": "MONTH"
+      },
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "Organization", "name": "AB Harris Methods" }
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="header">
+    <nav class="nav">
+      <a class="nav-brand" href="/" aria-label="AB Harris Methods home"><img src="abh-avatar.svg" alt="AB Harris Methods" class="nav-logo"></a>
+      <a href="/" class="nav-link">Services</a>
+      <a href="portfolio" class="nav-link">Portfolio</a>
+      <a href="feeds" class="nav-link active">Feeds</a>
+      <a href="stacks" class="nav-link">Stacks</a>
+      <a href="logs" class="nav-link">Engineering Logs</a>
+    </nav>
+  </header>
+
+  <article class="log-article">
+    <div class="offer-eyebrow">Data feed &middot; Compliance &amp; screening</div>
+    <h1 class="offer-title">OFAC sanctions (SDN) data feed</h1>
+    <p class="log-meta">SDN + consolidated lists &middot; hourly change detection &middot; from $250 / mo</p>
+
+    <dl class="feed-facts">
+      <div class="feed-fact"><dt>Coverage</dt><dd>SDN + consolidated</dd></div>
+      <div class="feed-fact"><dt>Cadence</dt><dd>Hourly detection, daily delta</dd></div>
+      <div class="feed-fact"><dt>Typical volume</dt><dd>~300 changes</dd></div>
+      <div class="feed-fact"><dt>Difficulty</dt><dd>Low to acquire</dd></div>
+      <div class="feed-fact"><dt>Price</dt><dd>$250 / mo</dd></div>
+    </dl>
+
+    <div class="log-body">
+      <h2>What's in it</h2>
+      <p>The Treasury sanctions lists, parsed into a typed entity model and delivered as changes rather than as a file:</p>
+      <ul class="experience-list">
+        <li><strong>Entries</strong> - individuals, organizations, vessels, and aircraft with type, primary name, and program codes</li>
+        <li><strong>Aliases</strong> - strong and weak aliases carried separately, because collapsing them destroys screening precision</li>
+        <li><strong>Identifiers</strong> - passports, national IDs, tax numbers, IMO and registration numbers, with issuing country</li>
+        <li><strong>Dates and places of birth</strong> - flattened with precision carried, so a year-only date is not treated as a day-level match</li>
+        <li><strong>Addresses</strong> - as sub-records rather than a single flattened string</li>
+        <li><strong>Change events</strong> - new, updated with a field-level changeset, and delisted with confirmation, each citing the run that observed it</li>
+      </ul>
+      <p>Delivered against the same entity model as the other screening sources, so an OFAC entry, a state enforcement action, and a corporate filing about the same party resolve into one record with every source row still individually addressable.</p>
+
+      <h2>Delivery</h2>
+      <p>Hourly conditional check on the published files with a delta emitted the moment anything changes, which is faster than the daily batch most screening vendors run. Lands in S3, a webhook, or your database. Delisting events publish as pending on the first clean observation and confirmed on the second, because a source fetch that quietly fails looks exactly like a delisting and only one of those is safe to act on.</p>
+
+      <div class="feed-hard">
+        <h2>Why this one is hard</h2>
+        <p>Start with the honest part: the file is free. Treasury publishes the SDN and consolidated lists in XML and CSV specifically so they get screened against, and if all you need is the file, download it and keep your $250. I would rather tell you that here than have you discover it after signing.</p>
+        <p>What is actually hard is that a sanctions list is not a document, it is a stream of changes, and the file gives you no changes. Every consumer has to compute the delta themselves, and computing it correctly is where the work is: a name change, an added alias, a corrected date of birth, and a delisting are four different events with four different downstream actions, and a naive row diff reports them all as "updated".</p>
+        <p>Alias semantics are load-bearing. The lists distinguish alias types that carry different match weights, and a pipeline that flattens them into one name array will either flood your queue with false positives or miss a real hit. Same for date-of-birth precision: treating a year-only value as a specific date is how a screening system produces confident nonsense.</p>
+        <p>Removals are the dangerous case. A row disappearing means a party was delisted, which compliance teams act on. A row disappearing because a fetch failed looks identical in the data. Any feed that reports removals without a confirmation rule is one bad morning away from telling a client to unblock a sanctioned party.</p>
+        <p>The schemas disagree with each other. The enhanced XML, the legacy files, and the consolidated list do not carry identical fields or identical values for the same entry, so one has to be canonical and the choice has to be documented rather than silently made.</p>
+      </div>
+
+      <h2>Build versus buy</h2>
+      <p>Build it yourself. Genuinely, for this one source, if you have an engineer who will own the delta semantics and the alias weighting, the acquisition is a download and the rest is a well-specified parsing problem.</p>
+      <p>Buy it when you want the sanctions delta in the same entity model and on the same delivery rail as your other screening sources, so your queue gets one shape of event rather than six. That is the actual product here, and the price reflects the pipeline rather than the acquisition.</p>
+
+      <h2>Related</h2>
+      <p>This feed is the real-time spine of the <a href="stacks">Compliance Screening Stack</a> ($3,650/mo), alongside <a href="feed-state-ag-actions">state attorney general enforcement actions</a>, <a href="feed-finra-brokercheck">FINRA BrokerCheck</a>, and <a href="feed-secretary-of-state">Secretary of State entity status</a>.</p>
+    </div>
+
+    <div class="log-cta">
+      Wondering whether you should just build this one? Ask me and I'll tell you straight, in a <a href="mailto:andrew@abharrismethods.com?subject=Feed%20Feasibility%20Check%20-%20OFAC%20SDN&body=Hi%20Andrew%20-%20requesting%20a%20Feed%20Feasibility%20Check%20on%20sanctions%20screening%20data.%0A%0ALists%20we%20need%20%28OFAC%20%2F%20EU%20%2F%20UK%20%2F%20other%29%3A%0A%0AHow%20the%20delta%20is%20consumed%3A%0A%0AParties%20monitored%3A%0A%0AWhat%20we%20use%20today%3A%0A%0AThanks%2C%0A">free Feed Feasibility Check</a>: what's acquirable, rough cost per record, and my honest read on build versus buy. - Andrew
+    </div>
+
+    <div class="cta-actions">
+      <a class="btn-primary" href="mailto:andrew@abharrismethods.com?subject=OFAC%20SDN%20feed%20-%20quote&body=Hi%20Andrew%20-%20interested%20in%20the%20OFAC%20sanctions%20feed.%0A%0ALists%20we%20need%3A%0A%0ADelivery%20cadence%3A%0A%0AWhere%20it%20should%20land%20%28S3%20%2F%20webhook%20%2F%20database%29%3A%0A%0AWhat%20we%20use%20today%3A%0A%0AThanks%2C%0A">Get a quote for this feed &rarr;</a>
+      <a class="btn-secondary" href="stacks">See the Compliance Stack &rarr;</a>
+    </div>
+
+    <p class="log-backlink"><a href="feeds">&larr; All feeds</a></p>
+  </article>
+
+  <footer class="footer">
+    <img src="abh-logo.svg" alt="AB Harris Methods" class="footer-logo">
+    <p>&copy; 2026 Andrew Harris &middot; Vancouver, WA</p>
+  </footer>
+
+  <script>
+    (function () {
+      var FEED = 'ofac-sdn';
+      document.querySelectorAll('a[href^="mailto:andrew@abharrismethods.com"]').forEach(function (a) {
+        var name = /Feasibility/i.test(a.getAttribute('href')) ? 'feasibility_check_request' : 'feed_quote_request';
+        a.addEventListener('click', function () {
+          window.va && window.va('event', { name: name, data: { feed: FEED } });
+        });
+      });
+    })();
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

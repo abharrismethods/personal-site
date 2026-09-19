@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#5cb85c" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1411" media="(prefers-color-scheme: dark)">
+  <title>State attorney general enforcement actions data feed (50 states) | Andrew Harris</title>
+  <meta name="description" content="Daily sweep of all 50 state attorney general offices: enforcement actions, settlements, and data breach notifications, extracted into structured records with every field citing its source sentence. From $2,000/mo.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AB Harris Methods">
+  <meta property="og:title" content="State attorney general enforcement actions data feed (50 states)">
+  <meta property="og:description" content="Daily sweep of 50 state attorney general offices for enforcement actions, settlements, and breach notifications, extracted into structured records.">
+  <meta property="og:url" content="https://www.abharrismethods.com/feed-state-ag-actions">
+  <link rel="canonical" href="https://www.abharrismethods.com/feed-state-ag-actions">
+  <meta property="og:image" content="https://www.abharrismethods.com/og-default-v2.png">
+  <meta property="og:image:width" content="2400">
+  <meta property="og:image:height" content="1260">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="State attorney general enforcement actions data feed (50 states)">
+  <meta name="twitter:description" content="Daily sweep of 50 state attorney general offices for enforcement actions, settlements, and breach notifications, extracted into structured records.">
+  <meta name="twitter:image" content="https://www.abharrismethods.com/og-default-v2.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=4">
+  <link rel="icon" type="image/png" href="favicon-32.png?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "State Attorney General Enforcement Actions Data Feed",
+    "description": "Daily sweep of 50 state attorney general offices for enforcement actions, settlements, and breach notifications, extracted into structured records.",
+    "brand": { "@type": "Brand", "name": "AB Harris Methods" },
+    "url": "https://www.abharrismethods.com/feed-state-ag-actions",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": "2000",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "2000",
+        "priceCurrency": "USD",
+        "unitText": "MONTH"
+      },
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "Organization", "name": "AB Harris Methods" }
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="header">
+    <nav class="nav">
+      <a class="nav-brand" href="/" aria-label="AB Harris Methods home"><img src="abh-avatar.svg" alt="AB Harris Methods" class="nav-logo"></a>
+      <a href="/" class="nav-link">Services</a>
+      <a href="portfolio" class="nav-link">Portfolio</a>
+      <a href="feeds" class="nav-link active">Feeds</a>
+      <a href="stacks" class="nav-link">Stacks</a>
+      <a href="logs" class="nav-link">Engineering Logs</a>
+    </nav>
+  </header>
+
+  <article class="log-article">
+    <div class="offer-eyebrow">Data feed &middot; Compliance &amp; enforcement</div>
+    <h1 class="offer-title">State attorney general enforcement actions feed</h1>
+    <p class="log-meta">50 AG offices &middot; daily sweep &middot; from $2,000 / mo</p>
+
+    <dl class="feed-facts">
+      <div class="feed-fact"><dt>Coverage</dt><dd>50 states + DC</dd></div>
+      <div class="feed-fact"><dt>Cadence</dt><dd>Daily</dd></div>
+      <div class="feed-fact"><dt>Typical volume</dt><dd>~2k records</dd></div>
+      <div class="feed-fact"><dt>Difficulty</dt><dd>High</dd></div>
+      <div class="feed-fact"><dt>Price</dt><dd>$2,000 / mo</dd></div>
+    </dl>
+
+    <div class="log-body">
+      <h2>What's in it</h2>
+      <p>Enforcement activity from all 50 state attorney general offices, swept daily and turned from prose into records:</p>
+      <ul class="experience-list">
+        <li><strong>Actions</strong> - settlements, lawsuits, indictments, consent orders, and advisories with the state and publication date</li>
+        <li><strong>Defendants</strong> - named parties extracted from the announcement text, normalized for matching against your entity list</li>
+        <li><strong>Amounts</strong> - settlement and penalty figures in integer cents, with the sentence they were taken from</li>
+        <li><strong>Conduct category</strong> - what the action was about, classified conservatively rather than inferred</li>
+        <li><strong>Case reference</strong> - case or docket number where the announcement carries one</li>
+        <li><strong>Breach notifications</strong> - where the AG operates a separate data breach notification registry, those entries are collected alongside</li>
+      </ul>
+      <p>Every extracted field carries the source sentence it came from, and anything the announcement does not state is null rather than inferred. Low-confidence extractions route to human review before they publish rather than shipping with a confidence score and a shrug.</p>
+
+      <h2>Delivery</h2>
+      <p>Daily sweep, delivered as new and updated actions. Lands in S3, a webhook, or your database. The manifest names which AG offices responded on each run, because an office that published nothing and an office whose site changed look the same until you measure them separately.</p>
+
+      <div class="feed-hard">
+        <h2>Why this one is hard</h2>
+        <p>This is the cheapest source in the compliance stack to fetch and the most expensive to make useful, and the gap between those two facts is the entire product. The acquisition is 50 press release sections, several of which expose RSS. Anyone can do that part in an afternoon.</p>
+        <p>The output is prose written by a communications office. An announcement says that the attorney general reached a settlement with several named companies over conduct described in a paragraph, for an amount mentioned once, possibly in words rather than digits. Turning that into a defendant list, a category, and a number is the work, and it does not yield to regular expressions alone.</p>
+        <p>Extraction that guesses is worse than no extraction. A fabricated defendant name in a screening feed is the worst output this kind of system can produce, because it is confident, plausible, and lands in a queue where somebody acts on it. The rule here is grounding: the model sees only the article text, every extracted value carries the sentence that supports it, anything unsupported comes back null, and below a confidence threshold a human looks at it before it ships. That is slower and it is the only defensible way to do it.</p>
+        <p>AG sites redesign constantly and without notice, more often than any government source in the catalogue. They are communications properties, not records systems, so they follow web fashion. Expect to re-point selectors several times a year and budget for it rather than being surprised.</p>
+        <p>Archives are shallow. Many offices paginate ten pages deep with no date filter and no stable permalink structure, which makes the initial backfill a fundamentally different job from the daily delta. A few offices publish nothing structured at all, and those are declared as partial coverage rather than quietly dropped.</p>
+      </div>
+
+      <h2>Build versus buy</h2>
+      <p>Build it yourself if you care about two or three states and you are willing to read the announcements. At that scale a human skimming an RSS feed genuinely outperforms a pipeline.</p>
+      <p>Buy it when you need all 50 on a daily cycle keyed to an entity list, because the recurring cost is not the crawl. It is the extraction quality bar, the review queue, and re-pointing selectors after each redesign. That is a standing commitment of a few hours a month that never goes away, against $2,000/mo.</p>
+      <p>One use restriction: enforcement data delivered here is not a consumer report and is not licensed for FCRA-covered decisions about employment, credit, insurance, or housing.</p>
+
+      <h2>Related</h2>
+      <p>This feed is the enforcement layer of the <a href="stacks">Compliance Screening Stack</a> ($3,650/mo), sitting alongside <a href="feed-ofac-sdn">OFAC sanctions</a>, <a href="feed-finra-brokercheck">FINRA BrokerCheck</a>, and <a href="feed-secretary-of-state">Secretary of State entity status</a>, all resolved to the same party model.</p>
+    </div>
+
+    <div class="log-cta">
+      Want to know what extraction quality actually looks like on this source? Ask for a sample and I'll come back inside 48 hours with a <a href="mailto:andrew@abharrismethods.com?subject=Feed%20Feasibility%20Check%20-%20State%20AG%20Actions&body=Hi%20Andrew%20-%20requesting%20a%20Feed%20Feasibility%20Check%20on%20state%20AG%20enforcement%20data.%0A%0AStates%20that%20matter%20most%3A%0A%0AEntities%20we%20screen%20against%3A%0A%0AHow%20the%20data%20gets%20consumed%3A%0A%0AWhat%20we%27ve%20tried%3A%0A%0AThanks%2C%0A">free Feed Feasibility Check</a>: what's acquirable, rough cost per record, and my honest read on build versus buy. - Andrew
+    </div>
+
+    <div class="cta-actions">
+      <a class="btn-primary" href="mailto:andrew@abharrismethods.com?subject=State%20AG%20Actions%20feed%20-%20quote&body=Hi%20Andrew%20-%20interested%20in%20the%20state%20AG%20enforcement%20actions%20feed.%0A%0AStates%20we%20need%3A%0A%0AEntity%20list%20size%3A%0A%0AWhere%20it%20should%20land%20%28S3%20%2F%20webhook%20%2F%20database%29%3A%0A%0AWhat%20we%20use%20today%3A%0A%0AThanks%2C%0A">Get a quote for this feed &rarr;</a>
+      <a class="btn-secondary" href="stacks">See the Compliance Stack &rarr;</a>
+    </div>
+
+    <p class="log-backlink"><a href="feeds">&larr; All feeds</a></p>
+  </article>
+
+  <footer class="footer">
+    <img src="abh-logo.svg" alt="AB Harris Methods" class="footer-logo">
+    <p>&copy; 2026 Andrew Harris &middot; Vancouver, WA</p>
+  </footer>
+
+  <script>
+    (function () {
+      var FEED = 'state-ag-actions';
+      document.querySelectorAll('a[href^="mailto:andrew@abharrismethods.com"]').forEach(function (a) {
+        var name = /Feasibility/i.test(a.getAttribute('href')) ? 'feasibility_check_request' : 'feed_quote_request';
+        a.addEventListener('click', function () {
+          window.va && window.va('event', { name: name, data: { feed: FEED } });
+        });
+      });
+    })();
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#5cb85c" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1411" media="(prefers-color-scheme: dark)">
+  <title>Zillow listing data feed (pricing, status, price history) | Andrew Harris</title>
+  <meta name="description" content="Listing status, list price, price history, and days on market for your ZIP, address, or MLS-area list. Scoped, low-volume enrichment delivered to S3, webhook, or your database from $500/mo.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AB Harris Methods">
+  <meta property="og:title" content="Zillow listing data feed (pricing, status, price history)">
+  <meta property="og:description" content="Listing status, list price, price history, and days on market for a scoped address or ZIP list, delivered weekly.">
+  <meta property="og:url" content="https://www.abharrismethods.com/feed-zillow">
+  <link rel="canonical" href="https://www.abharrismethods.com/feed-zillow">
+  <meta property="og:image" content="https://www.abharrismethods.com/og-default-v2.png">
+  <meta property="og:image:width" content="2400">
+  <meta property="og:image:height" content="1260">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Zillow listing data feed (pricing, status, price history)">
+  <meta name="twitter:description" content="Listing status, list price, price history, and days on market for a scoped address or ZIP list, delivered weekly.">
+  <meta name="twitter:image" content="https://www.abharrismethods.com/og-default-v2.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=4">
+  <link rel="icon" type="image/png" href="favicon-32.png?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Zillow Listing Data Feed",
+    "description": "Listing status, list price, price history, and days on market for a scoped address or ZIP list, delivered weekly.",
+    "brand": { "@type": "Brand", "name": "AB Harris Methods" },
+    "url": "https://www.abharrismethods.com/feed-zillow",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": "500",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "500",
+        "priceCurrency": "USD",
+        "unitText": "MONTH"
+      },
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "Organization", "name": "AB Harris Methods" }
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="header">
+    <nav class="nav">
+      <a class="nav-brand" href="/" aria-label="AB Harris Methods home"><img src="abh-avatar.svg" alt="AB Harris Methods" class="nav-logo"></a>
+      <a href="/" class="nav-link">Services</a>
+      <a href="portfolio" class="nav-link">Portfolio</a>
+      <a href="feeds" class="nav-link active">Feeds</a>
+      <a href="stacks" class="nav-link">Stacks</a>
+      <a href="logs" class="nav-link">Engineering Logs</a>
+    </nav>
+  </header>
+
+  <article class="log-article">
+    <div class="offer-eyebrow">Data feed &middot; Real estate &amp; market data</div>
+    <h1 class="offer-title">Zillow listing data feed</h1>
+    <p class="log-meta">Your ZIP or address list &middot; weekly &middot; from $500 / mo</p>
+
+    <dl class="feed-facts">
+      <div class="feed-fact"><dt>Coverage</dt><dd>Your address or ZIP list</dd></div>
+      <div class="feed-fact"><dt>Cadence</dt><dd>Weekly, daily on active</dd></div>
+      <div class="feed-fact"><dt>Typical volume</dt><dd>~10k records</dd></div>
+      <div class="feed-fact"><dt>Difficulty</dt><dd>Very high</dd></div>
+      <div class="feed-fact"><dt>Price</dt><dd>$500 / mo</dd></div>
+    </dl>
+
+    <div class="log-body">
+      <h2>What's in it</h2>
+      <p>Market-listing context for properties you already track, scoped to the addresses, ZIPs, or areas you name:</p>
+      <ul class="experience-list">
+        <li><strong>Listing status</strong> - active, pending, contingent, sold, off-market, with transition dates</li>
+        <li><strong>Pricing</strong> - current list price, prior list price, and the full price-change history with dates</li>
+        <li><strong>Days on market</strong> - cumulative and current-listing, which are different numbers and frequently confused</li>
+        <li><strong>Listing detail</strong> - beds, baths, square footage, lot size, year built as displayed on the listing</li>
+        <li><strong>Valuation estimate</strong> - the published automated estimate where present, carried as an estimate and never as an assessed value</li>
+      </ul>
+      <p>Keyed to the same normalized address and parcel identifier used across the property stack, so listing activity lines up against the county record for the same property rather than sitting in a separate table you have to join yourself.</p>
+
+      <h2>Delivery</h2>
+      <p>Weekly refresh, with a daily option on an active-listing subset. Lands in S3, a webhook, or your database. This feed is deliberately scoped and low-volume: it is built as enrichment on a property list you already hold, not as a market-wide listings database.</p>
+
+      <div class="feed-hard">
+        <h2>Why this one is hard</h2>
+        <p>This is a consumer platform, not a public record, and that changes the whole shape of the problem. Everything else in the property stack is published by a government office under an open-records statute. This is not, and the honest framing matters more than the engineering: you are buying scoped enrichment on a list you already have, delivered at low volume, and it is priced accordingly.</p>
+        <p>The anti-bot posture is the most aggressive in the property stack. Consumer real estate sites run commercial bot-management products with behavioural fingerprinting, and the naive approaches stop working within days. Sustaining it means low request rates, heavy caching, and accepting lower coverage rather than pushing through, which is exactly the opposite of how the county sources are run.</p>
+        <p>Price history is presented, not stored. What a listing page shows as history is a rendered view that can change retroactively when a listing is relisted, withdrawn, or re-entered under a new identifier. Treating it as an immutable log produces silent errors. The workable approach is to snapshot what was displayed, timestamp it, and keep your own history rather than trusting theirs.</p>
+        <p>The identifier is unstable. A property that goes off-market and relists can come back under a different listing id, which breaks naive keying and shows up as a phantom new listing. Resolution has to run on the address and parcel, not the site's own id.</p>
+        <p>If what you actually need is comprehensive market-listing data at scale, the correct answer is a licensed MLS or IDX feed through a broker relationship. That is what the industry runs on, it costs money, and it comes with redistribution rights. This feed is not a substitute for it and is not sold as one.</p>
+      </div>
+
+      <h2>Build versus buy</h2>
+      <p>Build it yourself if you need a few hundred addresses checked occasionally and you are comfortable owning the terms question. At that scale it is a small job.</p>
+      <p>Buy it when it needs to run on a schedule next to your county data, because the recurring cost here is not the initial scraper. It is keeping a scoped, low-rate, well-cached pipeline alive against a defence that updates continuously, and doing it without letting volume creep up. That discipline is most of what $500/mo buys.</p>
+      <p>Buy a licensed IDX feed instead if you need whole-market coverage, real-time updates, or contractual certainty about redistribution. I will tell you that on the feasibility check rather than sell you the wrong thing.</p>
+
+      <h2>Related</h2>
+      <p>This feed is the market-context layer of the <a href="stacks">Property &amp; Public Record Stack</a> ($5,500/mo). The record layer underneath it is <a href="feed-county-assessor">county assessor and recorder data</a>, <a href="feed-secretary-of-state">Secretary of State filings</a>, and <a href="feed-state-courts">state court records</a>, all of which are public record and carry none of the constraints above.</p>
+    </div>
+
+    <div class="log-cta">
+      Not sure whether you want this or a licensed MLS feed? Tell me the use case and I'll come back inside 48 hours with a <a href="mailto:andrew@abharrismethods.com?subject=Feed%20Feasibility%20Check%20-%20Zillow&body=Hi%20Andrew%20-%20requesting%20a%20Feed%20Feasibility%20Check%20on%20listing%20data.%0A%0AAddresses%20%2F%20ZIPs%20%2F%20areas%20we%20need%3A%0A%0AWhat%20we%27re%20using%20the%20listing%20data%20for%3A%0A%0AVolume%20%28properties%20tracked%29%3A%0A%0AWhat%20we%27ve%20tried%3A%0A%0AThanks%2C%0A">free Feed Feasibility Check</a>: what's acquirable, rough cost per record, and my honest read on build versus buy. - Andrew
+    </div>
+
+    <div class="cta-actions">
+      <a class="btn-primary" href="mailto:andrew@abharrismethods.com?subject=Zillow%20feed%20-%20quote&body=Hi%20Andrew%20-%20interested%20in%20the%20Zillow%20listing%20feed.%0A%0AAddresses%20%2F%20ZIPs%20%2F%20areas%20we%20need%3A%0A%0ARefresh%20cadence%3A%0A%0AWhere%20it%20should%20land%20%28S3%20%2F%20webhook%20%2F%20database%29%3A%0A%0AWhat%20we%20use%20today%3A%0A%0AThanks%2C%0A">Get a quote for this feed &rarr;</a>
+      <a class="btn-secondary" href="stacks">See the Property Stack &rarr;</a>
+    </div>
+
+    <p class="log-backlink"><a href="feeds">&larr; All feeds</a></p>
+  </article>
+
+  <footer class="footer">
+    <img src="abh-logo.svg" alt="AB Harris Methods" class="footer-logo">
+    <p>&copy; 2026 Andrew Harris &middot; Vancouver, WA</p>
+  </footer>
+
+  <script>
+    (function () {
+      var FEED = 'zillow';
+      document.querySelectorAll('a[href^="mailto:andrew@abharrismethods.com"]').forEach(function (a) {
+        var name = /Feasibility/i.test(a.getAttribute('href')) ? 'feasibility_check_request' : 'feed_quote_request';
+        a.addEventListener('click', function () {
+          window.va && window.va('event', { name: name, data: { feed: FEED } });
+        });
+      });
+    })();
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

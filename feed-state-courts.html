@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#5cb85c" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1411" media="(prefers-color-scheme: dark)">
+  <title>State court records data feed (civil filings, judgments, liens) | Andrew Harris</title>
+  <meta name="description" content="Civil case filings, judgments, liens, foreclosures, and evictions from state court portals, delivered as a daily delta on an explicit state list. From $2,000/mo to S3, webhook, or your database.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AB Harris Methods">
+  <meta property="og:title" content="State court records data feed (civil filings, judgments, liens)">
+  <meta property="og:description" content="Civil filings, judgments, liens, foreclosures, and evictions from state court portals, delivered as a daily delta on a declared state list.">
+  <meta property="og:url" content="https://www.abharrismethods.com/feed-state-courts">
+  <link rel="canonical" href="https://www.abharrismethods.com/feed-state-courts">
+  <meta property="og:image" content="https://www.abharrismethods.com/og-default-v2.png">
+  <meta property="og:image:width" content="2400">
+  <meta property="og:image:height" content="1260">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="State court records data feed (civil filings, judgments, liens)">
+  <meta name="twitter:description" content="Civil filings, judgments, liens, foreclosures, and evictions from state court portals, delivered as a daily delta on a declared state list.">
+  <meta name="twitter:image" content="https://www.abharrismethods.com/og-default-v2.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=4">
+  <link rel="icon" type="image/png" href="favicon-32.png?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "State Court Records Data Feed",
+    "description": "Civil filings, judgments, liens, foreclosures, and evictions from state court portals, delivered as a daily delta on a declared state list.",
+    "brand": { "@type": "Brand", "name": "AB Harris Methods" },
+    "url": "https://www.abharrismethods.com/feed-state-courts",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": "2000",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "2000",
+        "priceCurrency": "USD",
+        "unitText": "MONTH"
+      },
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "Organization", "name": "AB Harris Methods" }
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="header">
+    <nav class="nav">
+      <a class="nav-brand" href="/" aria-label="AB Harris Methods home"><img src="abh-avatar.svg" alt="AB Harris Methods" class="nav-logo"></a>
+      <a href="/" class="nav-link">Services</a>
+      <a href="portfolio" class="nav-link">Portfolio</a>
+      <a href="feeds" class="nav-link active">Feeds</a>
+      <a href="stacks" class="nav-link">Stacks</a>
+      <a href="logs" class="nav-link">Engineering Logs</a>
+    </nav>
+  </header>
+
+  <article class="log-article">
+    <div class="offer-eyebrow">Data feed &middot; Legal &amp; public records</div>
+    <h1 class="offer-title">State court records data feed</h1>
+    <p class="log-meta">Declared state list &middot; daily delta &middot; from $2,000 / mo</p>
+
+    <dl class="feed-facts">
+      <div class="feed-fact"><dt>Coverage</dt><dd>Explicit state list</dd></div>
+      <div class="feed-fact"><dt>Cadence</dt><dd>Daily new filings</dd></div>
+      <div class="feed-fact"><dt>Typical volume</dt><dd>~25k records</dd></div>
+      <div class="feed-fact"><dt>Difficulty</dt><dd>Very high</dd></div>
+      <div class="feed-fact"><dt>Price</dt><dd>$2,000 / mo</dd></div>
+    </dl>
+
+    <div class="log-body">
+      <h2>What's in it</h2>
+      <p>Civil case index records from state court portals, filtered to the case types and parties you specify:</p>
+      <ul class="experience-list">
+        <li><strong>Case index</strong> - case number, court, filing date, case type, current status, disposition date</li>
+        <li><strong>Parties</strong> - plaintiff and defendant names with roles, normalized for matching against your own list</li>
+        <li><strong>Property matters</strong> - foreclosure, lis pendens, quiet title, mechanic's liens, with the property address or parcel where the court publishes it</li>
+        <li><strong>Judgments and liens</strong> - judgment amounts, judgment creditors, abstracts of judgment</li>
+        <li><strong>Evictions</strong> - unlawful detainer filings and dispositions, where the state publishes them</li>
+        <li><strong>Docket activity</strong> - latest entry date and text, so you can see movement without pulling documents</li>
+      </ul>
+      <p>Case types are selected from an allow-list rather than filtered with a deny-list, so sealed, juvenile, and family matters cannot enter the corpus by accident. Coverage ships as an explicit list of the states and courts included, on every delivery, rather than an implied national footprint.</p>
+
+      <h2>Delivery</h2>
+      <p>Daily delta on new filings, weekly on status changes. Lands in S3, a webhook, or your database. Every run carries a manifest naming the courts that responded and the ones that did not, because in this source a quiet court and a court with no new filings look identical unless you measure it.</p>
+
+      <div class="feed-hard">
+        <h2>Why this one is hard</h2>
+        <p>There is no national court system, and "50 states" overstates what anyone can actually deliver. Fewer than half the states run a genuine statewide portal. In the rest, the real unit is the county or the judicial district, which means this source carries its own several-hundred-jurisdiction problem underneath the state-level one. Any vendor quoting you uniform national court coverage is quoting you something they cannot produce.</p>
+        <p>The terms are stricter than anywhere else in public records, and they are not just website terms. Several states restrict automated access by court rule or administrative order, which is a different kind of obligation from a terms-of-use page. That is why this feed is priced and scoped on a declared state list: states that do not clear a terms review are excluded and named, rather than quietly included and hoped about.</p>
+        <p>Sealing and redaction are handled at the source inconsistently. A matter sealed in one county may be visible in another's index for a period before it is pulled. Running this responsibly means an allow-list on case type, active handling of withdrawn records, and a correction path that actually removes data rather than marking it inactive.</p>
+        <p>Name matching is the hard part, not fetching. Court parties are free-text, frequently misspelled, often missing middle names, and sometimes carry the attorney rather than the party. Matching a docket to the company or person on your list is a scored, evidence-carrying operation, and any feed that hands you a confident match with no evidence is hiding a guess.</p>
+        <p>Where a state prohibits crawling but sells a bulk subscription, buying it is the right answer and goes into the quote as a pass-through.</p>
+      </div>
+
+      <h2>Build versus buy</h2>
+      <p>Build it yourself if you need one state you have already cleared legally and your case-type filter is narrow. Single-state court scraping is a well-trodden path.</p>
+      <p>Buy it when the answer has to span states, because the expensive part is not the scraping. It is the per-state terms review, the exclusion decisions, the allow-list maintenance, and the name matching. Those costs are the same whether you run three states or thirteen, and they recur. Weigh that against $2,000/mo, and weigh it again against what it costs to be wrong about a state you should not have been crawling.</p>
+      <p>One use restriction worth stating plainly, because it changes who can buy this: court data delivered here is not a consumer report and is not licensed for FCRA-covered decisions about employment, credit, insurance, or housing. If that is your use case, you need a consumer reporting agency, not a data feed.</p>
+
+      <h2>Related</h2>
+      <p>This feed is part of the <a href="stacks">Property &amp; Public Record Stack</a> ($5,500/mo), where court filings are joined to <a href="feed-county-assessor">parcel records</a> and <a href="feed-secretary-of-state">entity filings</a> so a foreclosure or lien resolves to a property and an owner rather than sitting as a loose case record.</p>
+    </div>
+
+    <div class="log-cta">
+      Not sure which states are actually acquirable? Send me the states and case types you need and I'll come back inside 48 hours with a <a href="mailto:andrew@abharrismethods.com?subject=Feed%20Feasibility%20Check%20-%20State%20Court%20Systems&body=Hi%20Andrew%20-%20requesting%20a%20Feed%20Feasibility%20Check%20on%20state%20court%20data.%0A%0AStates%20we%20need%3A%0A%0ACase%20types%20that%20matter%3A%0A%0AWhat%20we%27re%20matching%20against%20%28party%20names%20%2F%20companies%29%3A%0A%0AWhat%20we%27ve%20tried%3A%0A%0AThanks%2C%0A">free Feed Feasibility Check</a>: what's acquirable, rough cost per record, and my honest read on build versus buy. - Andrew
+    </div>
+
+    <div class="cta-actions">
+      <a class="btn-primary" href="mailto:andrew@abharrismethods.com?subject=State%20Court%20Systems%20feed%20-%20quote&body=Hi%20Andrew%20-%20interested%20in%20the%20state%20court%20records%20feed.%0A%0AStates%20we%20need%3A%0A%0ACase%20types%3A%0A%0ARefresh%20cadence%3A%0A%0AWhere%20it%20should%20land%20%28S3%20%2F%20webhook%20%2F%20database%29%3A%0A%0AWhat%20we%20use%20today%3A%0A%0AThanks%2C%0A">Get a quote for this feed &rarr;</a>
+      <a class="btn-secondary" href="stacks">See the Property Stack &rarr;</a>
+    </div>
+
+    <p class="log-backlink"><a href="feeds">&larr; All feeds</a></p>
+  </article>
+
+  <footer class="footer">
+    <img src="abh-logo.svg" alt="AB Harris Methods" class="footer-logo">
+    <p>&copy; 2026 Andrew Harris &middot; Vancouver, WA</p>
+  </footer>
+
+  <script>
+    (function () {
+      var FEED = 'state-courts';
+      document.querySelectorAll('a[href^="mailto:andrew@abharrismethods.com"]').forEach(function (a) {
+        var name = /Feasibility/i.test(a.getAttribute('href')) ? 'feasibility_check_request' : 'feed_quote_request';
+        a.addEventListener('click', function () {
+          window.va && window.va('event', { name: name, data: { feed: FEED } });
+        });
+      });
+    })();
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

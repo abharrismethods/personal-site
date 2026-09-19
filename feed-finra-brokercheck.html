@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#5cb85c" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1411" media="(prefers-color-scheme: dark)">
+  <title>FINRA BrokerCheck data feed (registrations and disclosures) | Andrew Harris</title>
+  <meta name="description" content="Broker and firm registration records plus disclosure events, keyed to your CRD list and delivered as a weekly delta. New disclosures arrive as typed alerts. From $450/mo to S3, webhook, or your database.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AB Harris Methods">
+  <meta property="og:title" content="FINRA BrokerCheck data feed (registrations and disclosures)">
+  <meta property="og:description" content="Broker registration records and disclosure events keyed to your CRD list, delivered as a weekly delta with new disclosures as typed alerts.">
+  <meta property="og:url" content="https://www.abharrismethods.com/feed-finra-brokercheck">
+  <link rel="canonical" href="https://www.abharrismethods.com/feed-finra-brokercheck">
+  <meta property="og:image" content="https://www.abharrismethods.com/og-default-v2.png">
+  <meta property="og:image:width" content="2400">
+  <meta property="og:image:height" content="1260">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FINRA BrokerCheck data feed (registrations and disclosures)">
+  <meta name="twitter:description" content="Broker registration records and disclosure events keyed to your CRD list, delivered as a weekly delta with new disclosures as typed alerts.">
+  <meta name="twitter:image" content="https://www.abharrismethods.com/og-default-v2.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=4">
+  <link rel="icon" type="image/png" href="favicon-32.png?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "FINRA BrokerCheck Data Feed",
+    "description": "Broker registration records and disclosure events keyed to your CRD list, delivered as a weekly delta with new disclosures as typed alerts.",
+    "brand": { "@type": "Brand", "name": "AB Harris Methods" },
+    "url": "https://www.abharrismethods.com/feed-finra-brokercheck",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": "450",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "450",
+        "priceCurrency": "USD",
+        "unitText": "MONTH"
+      },
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "Organization", "name": "AB Harris Methods" }
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="header">
+    <nav class="nav">
+      <a class="nav-brand" href="/" aria-label="AB Harris Methods home"><img src="abh-avatar.svg" alt="AB Harris Methods" class="nav-logo"></a>
+      <a href="/" class="nav-link">Services</a>
+      <a href="portfolio" class="nav-link">Portfolio</a>
+      <a href="feeds" class="nav-link active">Feeds</a>
+      <a href="stacks" class="nav-link">Stacks</a>
+      <a href="logs" class="nav-link">Engineering Logs</a>
+    </nav>
+  </header>
+
+  <article class="log-article">
+    <div class="offer-eyebrow">Data feed &middot; Compliance &amp; screening</div>
+    <h1 class="offer-title">FINRA BrokerCheck data feed</h1>
+    <p class="log-meta">Your CRD or name list &middot; weekly delta &middot; from $450 / mo</p>
+
+    <dl class="feed-facts">
+      <div class="feed-fact"><dt>Coverage</dt><dd>Your CRD list</dd></div>
+      <div class="feed-fact"><dt>Cadence</dt><dd>Weekly</dd></div>
+      <div class="feed-fact"><dt>Typical volume</dt><dd>~10k records</dd></div>
+      <div class="feed-fact"><dt>Difficulty</dt><dd>Medium</dd></div>
+      <div class="feed-fact"><dt>Price</dt><dd>$450 / mo</dd></div>
+    </dl>
+
+    <div class="log-body">
+      <h2>What's in it</h2>
+      <p>Registration and conduct records for the brokers and firms on your list:</p>
+      <ul class="experience-list">
+        <li><strong>Registration</strong> - CRD number, current and former firms, registration status, dates, and states registered</li>
+        <li><strong>Employment history</strong> - firm affiliations with start and end dates, including gaps</li>
+        <li><strong>Examinations</strong> - qualifying exams passed, with dates</li>
+        <li><strong>Disclosures</strong> - customer disputes, regulatory actions, criminal matters, terminations, and financial events, each as its own record</li>
+        <li><strong>Disclosure detail</strong> - event date, allegation, resolution, and amounts where published</li>
+        <li><strong>Change events</strong> - new disclosures and status transitions as typed alerts rather than a changed row you have to spot</li>
+      </ul>
+      <p>Disclosures are modelled as their own table with their own delta, because the registration record is context and the new disclosure is the thing you actually needed to know about. Everything is keyed on CRD, which you already store.</p>
+
+      <h2>Delivery</h2>
+      <p>Weekly refresh on your list, with new disclosures emitted as alerts the run they appear. Lands in S3, a webhook, or your database. Scoped to the CRDs or names you provide; this is not sold as a full copy of the registry.</p>
+
+      <div class="feed-hard">
+        <h2>Why this one is hard</h2>
+        <p>The acquisition is the easy half and it is worth saying so. The public site is driven by a JSON endpoint and FINRA additionally publishes downloadable reports, so where the published files carry the fields you need, the right build uses them and does no crawling at all. I check that route first on every engagement, because a feed with no crawler in it is a feed that cannot break.</p>
+        <p>The terms are stricter than a government open-records site, and it matters that FINRA is a self-regulatory organisation rather than a government publisher. Public availability is not the same permission that a state open-records statute grants, which is why this feed is scoped to your list rather than offered as a bulk copy, and why CRD space is never enumerated.</p>
+        <p>The registration record is not the product. Almost everyone building this the first time models a broker row and then discovers the thing their compliance team wanted was a notification that a new customer dispute appeared on someone already in their book. That is a child-table delta with its own identity and its own dedup problem, and retrofitting it onto a flat broker row is painful.</p>
+        <p>Disclosure text is unstructured and the amounts are inconsistent. Allegations and resolutions are narrative, damages are sometimes ranges and sometimes exact, and a settled dispute and a denied dispute both end up as a resolution string that needs careful reading rather than a lookup table.</p>
+        <p>Identity resolution against your own records is the recurring friction. Brokers move firms, change names, and appear in your CRM with a nickname. CRD is the strong key when you have it, and when you do not, matching on name and firm and state has to publish its evidence rather than assert a match.</p>
+      </div>
+
+      <h2>Build versus buy</h2>
+      <p>Build it yourself if your list is small and static and you are happy with a weekly manual check. For a few dozen CRDs this is not a pipeline problem.</p>
+      <p>Buy it when the list is large enough that a new disclosure could appear on someone and nobody would notice for a quarter. The value here is the alert, not the data, and the cost that recurs is keeping the disclosure delta correct and deduped against your list. Against $450/mo that is usually an easy call.</p>
+      <p>One use restriction: this feed is not a consumer report and is not licensed for FCRA-covered decisions about employment, credit, insurance, or housing. Broker due diligence and ongoing compliance monitoring are what it is built for.</p>
+
+      <h2>Related</h2>
+      <p>This feed is part of the <a href="stacks">Compliance Screening Stack</a> ($3,650/mo) with <a href="feed-ofac-sdn">OFAC sanctions</a>, <a href="feed-state-ag-actions">state AG enforcement actions</a>, and <a href="feed-secretary-of-state">Secretary of State entity status</a>, all resolved to one party model so a broker, their firm, and any action against either arrive as one record.</p>
+    </div>
+
+    <div class="log-cta">
+      Not sure whether the published files cover what you need? Send me your field list and I'll come back inside 48 hours with a <a href="mailto:andrew@abharrismethods.com?subject=Feed%20Feasibility%20Check%20-%20FINRA%20BrokerCheck&body=Hi%20Andrew%20-%20requesting%20a%20Feed%20Feasibility%20Check%20on%20FINRA%20BrokerCheck%20data.%0A%0ACRD%20list%20size%3A%0A%0AFields%20that%20matter%20most%3A%0A%0AHow%20alerts%20get%20consumed%3A%0A%0AWhat%20we%27ve%20tried%3A%0A%0AThanks%2C%0A">free Feed Feasibility Check</a>: what's acquirable, rough cost per record, and my honest read on build versus buy. - Andrew
+    </div>
+
+    <div class="cta-actions">
+      <a class="btn-primary" href="mailto:andrew@abharrismethods.com?subject=FINRA%20BrokerCheck%20feed%20-%20quote&body=Hi%20Andrew%20-%20interested%20in%20the%20FINRA%20BrokerCheck%20feed.%0A%0ACRD%20list%20size%3A%0A%0ARefresh%20cadence%3A%0A%0AWhere%20it%20should%20land%20%28S3%20%2F%20webhook%20%2F%20database%29%3A%0A%0AWhat%20we%20use%20today%3A%0A%0AThanks%2C%0A">Get a quote for this feed &rarr;</a>
+      <a class="btn-secondary" href="stacks">See the Compliance Stack &rarr;</a>
+    </div>
+
+    <p class="log-backlink"><a href="feeds">&larr; All feeds</a></p>
+  </article>
+
+  <footer class="footer">
+    <img src="abh-logo.svg" alt="AB Harris Methods" class="footer-logo">
+    <p>&copy; 2026 Andrew Harris &middot; Vancouver, WA</p>
+  </footer>
+
+  <script>
+    (function () {
+      var FEED = 'finra-brokercheck';
+      document.querySelectorAll('a[href^="mailto:andrew@abharrismethods.com"]').forEach(function (a) {
+        var name = /Feasibility/i.test(a.getAttribute('href')) ? 'feasibility_check_request' : 'feed_quote_request';
+        a.addEventListener('click', function () {
+          window.va && window.va('event', { name: name, data: { feed: FEED } });
+        });
+      });
+    })();
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
