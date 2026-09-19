@@ -52,12 +52,12 @@
     <div class="offer-body">
       <div class="offer-eyebrow">Pre-scoped feeds</div>
       <h1 class="offer-title">Productized data feeds, on the same infrastructure I deploy for clients.</h1>
-      <p class="offer-name">47 recurring sources · scoped to your input list · delivered to S3, a webhook, or your database</p>
+      <p class="offer-name">40 recurring sources · scoped to your input list · delivered to S3, a webhook, or your database</p>
       <p class="offer-positioning">
         Pick a source below. Each feed is scoped to an input list you provide, and the quote scales with list size and refresh cadence. Buying four or five related sources? The <a href="stacks">bundled stacks</a> are priced below the sum of their parts.
       </p>
       <div class="chip-row">
-        <span class="chip chip-accent">47 sources</span>
+        <span class="chip chip-accent">40 sources</span>
         <span class="chip">$200–$2,800 / mo</span>
         <span class="chip">S3 · webhook · database</span>
       </div>
@@ -97,51 +97,47 @@
           <tr><td>Zillow</td><td>Real Estate</td><td>For your ZIP, address, or MLS-area list - listings, Zestimates, transaction history, price changes</td><td class="col-num">~10k</td><td class="col-price">$500</td></tr>
           <tr><td>Indeed</td><td>Talent</td><td>For your company or role-keyword list - postings, salaries, locations, posting age</td><td class="col-num">~20k</td><td class="col-price">$500</td></tr>
           <tr><td>Glassdoor</td><td>Firmographics</td><td>For your company list - reviews, salaries, interview questions, CEO approval, benefits</td><td class="col-num">~8k</td><td class="col-price">$500</td></tr>
-          <tr><td>Crunchbase</td><td>Financial</td><td>For your company or investor list - funding rounds, acquisitions, IPOs, board members</td><td class="col-num">~8k</td><td class="col-price">$450</td></tr>
           <tr><td>Walmart</td><td>Retail</td><td>For your SKU or category list - pricing, reviews, availability, pickup options by store</td><td class="col-num">~20k</td><td class="col-price">$1,550</td></tr>
           <tr><td><a href="feed-county-assessor">County Assessor/Recorder</a> <span class="feeds-badge">3,000+ counties</span></td><td>Real Estate</td><td>For your target counties - monthly delta of ownership, deeds, tax assessments, liens, mortgages</td><td class="col-num">~200k</td><td class="col-price">$2,800</td></tr>
           <tr><td>Secretary of State <span class="feeds-badge">50 states</span></td><td>Corporate</td><td>For your entity list - filings, registered agents, annual reports, UCC records across all 50 SoS portals</td><td class="col-num">~50k</td><td class="col-price">$2,300</td></tr>
           <tr><td>OFAC Sanctions (SDN)</td><td>Compliance</td><td>Daily delta of the full SDN list - new and updated entries, alt names, vessels, IDs</td><td class="col-num">~300</td><td class="col-price">$250</td></tr>
-          <tr><td>PACER</td><td>Legal</td><td>For your party, district, or docket-type filters - federal filings, opinions, bankruptcy records</td><td class="col-num">~5k</td><td class="col-price">$500</td></tr>
           <tr><td>State Court Systems <span class="feeds-badge">50 states</span></td><td>Legal</td><td>For your party, docket-type, or county filters - civil and criminal records, judgments, liens, evictions</td><td class="col-num">~25k</td><td class="col-price">$2,000</td></tr>
           <tr><td>NPI Registry (NPPES)</td><td>Healthcare</td><td>For your NPI, name, or taxonomy filter - provider lookups with specialty, address, affiliations</td><td class="col-num">~10k</td><td class="col-price">$200</td></tr>
           <tr><td>Booking.com / Expedia</td><td>Travel</td><td>For your property or destination + date-range combos - pricing, availability, reviews, cancellation policies</td><td class="col-num">~25k</td><td class="col-price">$2,100</td></tr>
-          <tr><td>BuiltWith</td><td>Firmographics</td><td>For your domain list - detected technology stack, stack-change deltas, category coverage</td><td class="col-num">~10k</td><td class="col-price">$400</td></tr>
           <tr><td>Google News</td><td>News</td><td>For your keyword or entity list - daily article aggregation across publishers, deduped and clustered</td><td class="col-num">~40k</td><td class="col-price">$800</td></tr>
-          <tr><td>Reddit (public subreddits)</td><td>Sentiment</td><td>For your keyword or subreddit list - posts, comments, sentiment, thread velocity</td><td class="col-num">~75k</td><td class="col-price">$800</td></tr>
+          <tr><td>Reddit (public subreddits) <span class="feeds-badge feeds-badge-license" title="Delivered under a licensed API or data agreement">Licensed source</span></td><td>Sentiment</td><td>For your keyword or subreddit list - posts, comments, sentiment, thread velocity</td><td class="col-num">~75k</td><td class="col-price">$800</td></tr>
           <tr><td>FINRA BrokerCheck</td><td>Compliance</td><td>For your CRD or broker-name list - registrations, disciplinary records, employment history</td><td class="col-num">~10k</td><td class="col-price">$450</td></tr>
           <tr><td>Greenhouse / Lever / Workable</td><td>Talent</td><td>For your company list - open roles, team signals, hiring velocity from public ATS boards</td><td class="col-num">~10k</td><td class="col-price">$500</td></tr>
           <tr><td>Custom careers pages</td><td>Talent</td><td>For your company list - bespoke scrape of any company's /careers site, including those not on a standard ATS</td><td class="col-num">per company</td><td class="col-price">$0.20–$3 / co.</td></tr>
           <tr><td>X (Twitter)</td><td>Sentiment</td><td>For your keywords or account list - mentions, sentiment, engagement, influencer reach</td><td class="col-num">~100k</td><td class="col-price">$1,900</td></tr>
           <tr><td>FDA (openFDA)</td><td>Healthcare</td><td>For your drug or device list - approvals, adverse events, recalls, 510(k), inspections</td><td class="col-num">~5k</td><td class="col-price">$300</td></tr>
-          <tr><td>Yahoo Finance</td><td>Financial</td><td>For your ticker list - quotes, historicals, fundamentals, analyst estimates, options chains</td><td class="col-num">~10k</td><td class="col-price">$600</td></tr>
+          <tr><td>Yahoo Finance <span class="feeds-badge feeds-badge-license" title="Delivered under a licensed API or data agreement">Licensed source</span></td><td>Financial</td><td>For your ticker list - quotes, historicals, fundamentals, analyst estimates, options chains</td><td class="col-num">~10k</td><td class="col-price">$600</td></tr>
           <tr><td>Kayak / Google Flights / Skyscanner</td><td>Travel</td><td>For your origin-destination + date pairs - airfare pricing, fare calendars, price-change tracking</td><td class="col-num">~30k</td><td class="col-price">$1,900</td></tr>
-          <tr><td>CoinGecko / CoinMarketCap</td><td>Crypto</td><td>For your token list - price, volume, market cap, exchange-level data</td><td class="col-num">~15k</td><td class="col-price">$800</td></tr>
+          <tr><td>CoinGecko / CoinMarketCap <span class="feeds-badge feeds-badge-license" title="Delivered under a licensed API or data agreement">Licensed source</span></td><td>Crypto</td><td>For your token list - price, volume, market cap, exchange-level data</td><td class="col-num">~15k</td><td class="col-price">$800</td></tr>
           <tr><td>Etherscan / BscScan / Polygonscan</td><td>Crypto</td><td>For your wallet or contract list - transactions, token transfers, gas, internal calls</td><td class="col-num">~100k</td><td class="col-price">$800</td></tr>
           <tr><td>Pharmacy &amp; Medical Boards <span class="feeds-badge">50 states</span></td><td>Healthcare</td><td>For your NPI or name list - license verification and disciplinary status across all 50 state boards</td><td class="col-num">~40k</td><td class="col-price">$2,200</td></tr>
           <tr><td>State Attorney General Actions</td><td>Compliance</td><td>Daily sweep of all 50 AG sites - new enforcement actions, data-breach notifications, settlements</td><td class="col-num">~2k</td><td class="col-price">$2,000</td></tr>
-          <tr><td>MarineTraffic / VesselFinder</td><td>Supply Chain</td><td>For your vessel, IMO, or fleet list - positions, port calls, ETAs, voyage history</td><td class="col-num">~30k</td><td class="col-price">$800</td></tr>
+          <tr><td>MarineTraffic / VesselFinder <span class="feeds-badge feeds-badge-license" title="Delivered under a licensed API or data agreement">Licensed source</span></td><td>Supply Chain</td><td>For your vessel, IMO, or fleet list - positions, port calls, ETAs, voyage history</td><td class="col-num">~30k</td><td class="col-price">$800</td></tr>
           <tr><td>State Procurement Portals <span class="feeds-badge">50 states</span></td><td>Gov Contracts</td><td>Daily sweep across all 50 state portals - new RFPs, contract awards, vendor registrations matching your keyword filters</td><td class="col-num">~40k</td><td class="col-price">$2,600</td></tr>
           <tr><td>Port Authority Sites <span class="feeds-badge">50+ ports</span></td><td>Supply Chain</td><td>For the ports you select - container volumes, congestion metrics, vessel schedules, berth assignments</td><td class="col-num">~20k</td><td class="col-price">$2,600</td></tr>
           <tr><td>GoodRx</td><td>Healthcare</td><td>For your drug + ZIP list - pharmacy-level prices, coupons, generic alternatives</td><td class="col-num">~15k</td><td class="col-price">$550</td></tr>
-          <tr><td>Carfax (public listings)</td><td>Automotive</td><td>For your VIN list - history summaries, accident indicators, service records</td><td class="col-num">~10k</td><td class="col-price">$1,350</td></tr>
           <tr><td>Wayfair</td><td>Retail</td><td>For your SKU or category list - pricing, reviews, availability, sale status</td><td class="col-num">~15k</td><td class="col-price">$1,350</td></tr>
           <tr><td>Instacart / FreshDirect</td><td>Grocery</td><td>For your SKU + ZIP list - grocery pricing and availability by store and retailer</td><td class="col-num">~25k</td><td class="col-price">$1,350</td></tr>
           <tr><td>StockX / GOAT</td><td>Resale</td><td>For your product or SKU list - resale pricing, sales history, price premiums, size-level liquidity</td><td class="col-num">~20k</td><td class="col-price">$2,100</td></tr>
-          <tr><td>Shodan</td><td>Security</td><td>For your IP-range, org, or product-string set - open ports, service banners, vulnerabilities</td><td class="col-num">~40k</td><td class="col-price">$800</td></tr>
+          <tr><td>Shodan <span class="feeds-badge feeds-badge-license" title="Delivered under a licensed API or data agreement">Licensed source</span></td><td>Security</td><td>For your IP-range, org, or product-string set - open ports, service banners, vulnerabilities</td><td class="col-num">~40k</td><td class="col-price">$800</td></tr>
           <tr><td>NFT Marketplaces (OpenSea / Blur)</td><td>Crypto</td><td>For your collection list - floor prices, volume, sales, rarity, holder concentration</td><td class="col-num">~30k</td><td class="col-price">$1,600</td></tr>
-          <tr><td>Glassnode (public)</td><td>Crypto</td><td>For your asset list - on-chain metrics, exchange flows, miner data, HODL waves</td><td class="col-num">~10k</td><td class="col-price">$1,050</td></tr>
-          <tr><td>Dow Jones / World-Compliance Watchlists</td><td>Compliance</td><td>For your entity list - PEP flags, adverse media, watchlist screening with change tracking</td><td class="col-num">~100k</td><td class="col-price">$1,050</td></tr>
           <tr><td>State Insurance Rate Filings</td><td>Insurance</td><td>For your carrier or line-of-business filters - filed rates, forms, actuarial justifications, approval status</td><td class="col-num">~3k</td><td class="col-price">$1,750</td></tr>
-          <tr><td>FlightAware / FlightRadar24</td><td>Aviation</td><td>For your tail-number, route, or operator list - live flight data, delays, airport performance, history</td><td class="col-num">~60k</td><td class="col-price">$1,600</td></tr>
-          <tr><td>DAT Freight &amp; Analytics</td><td>Logistics</td><td>For your origin-destination lane list - spot rates, rate trends, capacity signals</td><td class="col-num">~8k</td><td class="col-price">$1,050</td></tr>
+          <tr><td>FlightAware / FlightRadar24 <span class="feeds-badge feeds-badge-license" title="Delivered under a licensed API or data agreement">Licensed source</span></td><td>Aviation</td><td>For your tail-number, route, or operator list - live flight data, delays, airport performance, history</td><td class="col-num">~60k</td><td class="col-price">$1,600</td></tr>
           <tr><td>Blind (public threads)</td><td>Sentiment</td><td>For your company or topic list - thread content, sentiment, compensation signals, layoff chatter</td><td class="col-num">~15k</td><td class="col-price">$1,050</td></tr>
         </tbody>
       </table>
     </div>
     <p class="feeds-empty" id="feeds-empty" hidden>No feeds match that search. Try a broader term, or <a href="mailto:andrew@abharrismethods.com?subject=Custom%20feed%20quote">email for a custom quote</a>.</p>
     <p class="feeds-footnote">
-      Record volumes and prices are averages - both scale with your input list size and how often you want the feed refreshed. A few feeds (e.g. custom careers pages) are priced per unit rather than a monthly flat. Don't see the source you need? The same infrastructure handles ~any public web source - <a href="mailto:andrew@abharrismethods.com?subject=Custom%20feed%20quote">email for a tailored quote</a>.
+      <span class="feeds-badge feeds-badge-license">Licensed source</span> marks a feed where the underlying data sits behind a third-party API or data agreement. Those feeds are delivered under that licence, and the licence fee is quoted as a disclosed pass-through on top of the feed price - either on my agreement or on yours, whichever your procurement prefers. Everything without the mark is public record or open government data, acquired directly from the publisher.
+    </p>
+    <p class="feeds-footnote">
+      Record volumes and prices are averages - both scale with your input list size and how often you want the feed refreshed. A few feeds (e.g. custom careers pages) are priced per unit rather than a monthly flat. Feeds are not consumer reports and are not licensed for FCRA-covered decisions about employment, credit, insurance, or housing. Don't see the source you need? The same infrastructure handles ~any public web source - <a href="mailto:andrew@abharrismethods.com?subject=Custom%20feed%20quote">email for a tailored quote</a>.
     </p>
 
     <h2 class="section-title">Not sure which feed?</h2>

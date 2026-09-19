@@ -1106,6 +1106,17 @@ a:hover {
   white-space: nowrap;
 }
 
+.feeds-badge-license {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px dashed var(--border);
+}
+
+.feeds-footnote .feeds-badge-license {
+  margin-left: 0;
+  margin-right: 0.15rem;
+}
+
 .feeds-footnote {
   margin-top: 0.85rem;
   font-size: 0.88rem;
