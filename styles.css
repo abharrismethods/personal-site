@@ -1513,6 +1513,49 @@ a:hover {
   margin-top: 0.6rem;
 }
 
+/* Who I work with */
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.audience-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.15rem 1.25rem;
+}
+
+.services-main .audience-label {
+  margin: 0 0 0.35rem;
+  font-size: 0.97rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text-primary);
+}
+
+.services-main .audience-desc {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.services-main .audience-note {
+  margin: 0.9rem 0 0;
+  padding-left: 0.85rem;
+  border-left: 2px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 640px) {
+  .audience-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ============================================================
    Intake form (cta-card 6-field grid)
    ============================================================ */
