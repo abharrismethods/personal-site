@@ -924,6 +924,41 @@ a:hover {
   margin-bottom: 1rem;
 }
 
+/* Stacks: how pricing, setup and sourcing work */
+.stack-terms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 2rem;
+  margin: 0 0 1.75rem;
+  padding: 1.1rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.stack-terms dt {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.stack-terms dd {
+  margin: 0.2rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.stack-terms .feeds-badge-license {
+  margin-left: 0;
+}
+
+@media (max-width: 640px) {
+  .stack-terms {
+    grid-template-columns: 1fr;
+  }
+}
+
 .feeds-search-wrap {
   position: relative;
   margin-bottom: 0.6rem;
