@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#5cb85c" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1411" media="(prefers-color-scheme: dark)">
+  <title>Who's Actually Buying Web Data Now? | Extract Summit Austin 2026 | Andrew Harris</title>
+  <meta name="description" content="Slides and notes from Andrew Harris's Extract Summit Austin 2026 talk: the new buyers of web data, the four things they ask for, and a free feasibility check.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AB Harris Methods">
+  <meta property="og:title" content="Who's actually buying web data now? · Extract Summit Austin 2026">
+  <meta property="og:description" content="The buyer stopped asking how much you can get. They're asking what you can prove. Slides, the four asks, and a free feasibility check.">
+  <meta property="og:url" content="https://www.abharrismethods.com/extract">
+  <link rel="canonical" href="https://www.abharrismethods.com/extract">
+  <meta property="og:image" content="https://www.abharrismethods.com/og-default-v2.png">
+  <meta property="og:image:width" content="2400">
+  <meta property="og:image:height" content="1260">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Who's actually buying web data now? · Extract Summit Austin 2026">
+  <meta name="twitter:description" content="The buyer stopped asking how much you can get. They're asking what you can prove.">
+  <meta name="twitter:image" content="https://www.abharrismethods.com/og-default-v2.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=4">
+  <link rel="icon" type="image/png" href="favicon-32.png?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <!-- Talk page for Extract Summit Austin 2026. Self-contained: it adds no styles to styles.css
+       and nothing else on the site links here, so removing this file (and the slides PDF) undoes it. -->
+  <style>
+    .extract-asks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+    .extract-asks .experience-card { margin-bottom: 0; }
+    .extract-ask-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin: 0 0 0.35rem; }
+    .extract-ask-q { font-style: italic; color: var(--text-primary); margin: 0.35rem 0 0.6rem; }
+    .extract-ask-fix { font-size: 0.92rem; color: var(--text-secondary); margin: 0; }
+    .extract-email { margin-top: 0.85rem; font-size: 0.92rem; color: var(--text-muted); }
+    .extract-email strong { color: var(--text-primary); user-select: all; }
+    @media (max-width: 640px) { .extract-asks { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a class="nav-brand" href="/" aria-label="AB Harris Methods home"><img src="abh-avatar.svg" alt="AB Harris Methods" class="nav-logo"></a>
+    <a href="/" class="nav-link">Services</a>
+    <a href="portfolio" class="nav-link">Portfolio</a>
+    <a href="feeds" class="nav-link">Feeds</a>
+    <a href="stacks" class="nav-link">Stacks</a>
+    <a href="logs" class="nav-link">Engineering Logs</a>
+  </nav>
+
+  <!-- Header -->
+  <section class="offer-card" aria-label="Extract Summit Austin 2026 talk">
+    <img class="offer-avatar" src="headshot.jpg" alt="Andrew Harris">
+    <div class="offer-body">
+      <div class="offer-eyebrow">Extract Summit · Austin · 2026</div>
+      <h1 class="offer-title">Who's actually buying web data now?</h1>
+      <p class="offer-name">Andrew Harris · AB Harris Methods</p>
+      <p class="offer-positioning">
+        The buyer stopped asking how much you can get. They're asking what you can prove. Here are the slides, the four things the new buyers ask for, and a free way to pressure-test a source of your own.
+      </p>
+      <div class="chip-row">
+        <a class="chip chip-accent" href="extract-austin-2026-slides.pdf">Slides (PDF)</a>
+        <a class="chip" href="#feasibility">Free feasibility check</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <!-- The offer from the closing slide -->
+    <h2 class="section-title" id="feasibility">Free feasibility check</h2>
+    <div class="cta-card">
+      <p class="cta-lead">Fighting one of these right now? Send me the source you're stuck on. Within 48 hours I'll send back a one-page read: whether it's acquirable at your volume, roughly what it costs per record, and whether you should build it or buy it. Free, no call required.</p>
+      <div class="cta-actions">
+        <a class="btn-primary" data-track="feasibility_click" href="mailto:andrew@abharrismethods.com?subject=Feasibility%20check%20%28Extract%20Austin%29&body=Hi%20Andrew%20%E2%80%94%20saw%20your%20Extract%20talk.%0A%0ASource%20%28URL%20if%20you%20have%20it%29%3A%0A%0AWhat%20we%20need%20off%20it%3A%0A%0AVolume%20%28records%20/%20month%29%3A%0A%0AWhat%20we%27ve%20tried%3A%0A%0AThanks%2C%0A">Send me your source</a>
+      </div>
+      <p class="extract-email">Button not opening your mail app? Email <strong>andrew@abharrismethods.com</strong> with "Extract" in the subject.</p>
+    </div>
+
+    <!-- The four asks -->
+    <h2 class="section-title">The four asks</h2>
+    <p class="feeds-intro">What the new buyers ask on the first call, and the change that answers it.</p>
+    <div class="extract-asks">
+      <div class="experience-card">
+        <p class="extract-ask-label">1 · Coverage</p>
+        <h3 class="tier-title">Coverage is a denominator, not a success rate</h3>
+        <p class="extract-ask-q">"You crawl 3,000 counties. Which ones were missing last month, and is the gap random?"</p>
+        <p class="extract-ask-fix">Ship the roster and the exclusion list with every delivery, so buyers see the shape of the gap, not just the rate.</p>
+      </div>
+      <div class="experience-card">
+        <p class="extract-ask-label">2 · Freshness</p>
+        <h3 class="tier-title">Freshness is a distribution, not a schedule</h3>
+        <p class="extract-ask-q">"Your SLA says monthly. What's the p99 age of the rows in the file you just sent me?"</p>
+        <p class="extract-ask-fix">Report age per source, at the tail, from when each value was last confirmed, not last attempted.</p>
+      </div>
+      <div class="experience-card">
+        <p class="extract-ask-label">3 · Provenance</p>
+        <h3 class="tier-title">Provenance has to survive the delivery</h3>
+        <p class="extract-ask-q">"This says 400 employees. Show me the page that said so, as it looked when you read it."</p>
+        <p class="extract-ask-fix">Link every shipped field to its snapshot and parser version, and treat raw-page retention as a contract term.</p>
+      </div>
+      <div class="experience-card">
+        <p class="extract-ask-label">4 · Reproducibility</p>
+        <h3 class="tier-title">Reproducibility is the one nobody prices in</h3>
+        <p class="extract-ask-q">"If my benchmark score moves next quarter, was that my model or your data?"</p>
+        <p class="extract-ask-fix">Treat a parser change like a schema migration: diff it against stored pages, then tell buyers what moved.</p>
+      </div>
+    </div>
+    <p class="portfolio-crosslink">
+      <a href="extract-austin-2026-slides.pdf" data-track="slides_download">Download the full slides (PDF)</a> · Want this applied to your whole stack? That's the <a href="/">Data Acquisition Audit</a>.
+    </p>
+
+    <!-- Go deeper -->
+    <h2 class="section-title">Go deeper</h2>
+    <div class="log-list">
+      <a class="experience-card services-card log-index-card" href="log-scraper-works-in-dev-dies-in-prod">
+        <div class="tier-header">
+          <div class="tier-eyebrow">Log #5</div>
+          <h3 class="tier-title">Why your scraper works in dev and dies in prod</h3>
+        </div>
+        <p>The long version of the talk's first silent failure: the 200 OK that writes empty rows while every dashboard stays green, and how to catch it.</p>
+        <div class="log-index-meta"><span>~8 min read</span> · <span class="log-index-readmore">Read &rarr;</span></div>
+      </a>
+      <a class="experience-card services-card log-index-card" href="log-rag-needs-acquisition-strategy">
+        <div class="tier-header">
+          <div class="tier-eyebrow">Log #4</div>
+          <h3 class="tier-title">Why RAG fails without an acquisition strategy</h3>
+        </div>
+        <p>Why AI products plateau on data quality, and what a real ingestion pipeline looks like, including the part nobody talks about: continuous coverage.</p>
+        <div class="log-index-meta"><span>~7 min read</span> · <span class="log-index-readmore">Read &rarr;</span></div>
+      </a>
+    </div>
+
+    <h2 class="section-title">Get notified</h2>
+    <div class="cta-card">
+      <p class="cta-lead">Not ready to talk? Email me and I'll add you to a small "ship list" that gets a one-line note when each new engineering log goes live.</p>
+      <div class="cta-actions">
+        <a class="btn-primary" data-track="ship_list_signup" href="mailto:andrew@abharrismethods.com?subject=Add%20me%20to%20the%20Engineering%20Logs%20ship%20list%20%28Extract%20Austin%29">Add me to the ship list</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <img src="abh-logo.svg" alt="AB Harris Methods" class="footer-logo">
+    <p>&copy; 2026 Andrew Harris · Vancouver, WA</p>
+  </footer>
+
+  <!-- Analytics: feasibility, slides and ship-list clicks from the talk page -->
+  <script>
+    (function () {
+      document.querySelectorAll('[data-track]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          window.va && window.va('event', { name: a.getAttribute('data-track'), data: { location: 'extract' } });
+        });
+      });
+    })();
+  </script>
+  <!-- Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
