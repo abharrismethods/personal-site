@@ -1,4 +1,8 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/extract", "destination": "/", "permanent": false },
+    { "source": "/extract-austin-2026-slides.pdf", "destination": "/", "permanent": false }
+  ]
 }
